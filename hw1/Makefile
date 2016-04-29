@@ -9,16 +9,15 @@ $(warning VERILOG_FILES=$(VERILOG_FILES))
 
 nothing:
 
+setup:
+	-git clone https://bitbucket.org/taylor-bsg/bsg_ip_cores.git
+
 run: $(VERILOG_FILES)
 	xvlog -sv $^
 	@echo \#\#\# bsg elaborating...
 	xelab -debug typical $(TOPLEVEL) -s top_sim
 	@echo \#\#\# bsg simulating
 	xsim top_sim --runall
-
-setup:
-	-git clone https://bitbucket.org/taylor-bsg/bsg_ip_cores.git
-	-git clone https://bitbucket.org/taylor-bsg/bsg_manycore.git
 
 clean:
 	rm -rf *.log *.jou *.pb xsim.dir *.wdb
