@@ -15,12 +15,5 @@ build-riscv-tools:
 	cd rocket-chip/riscv-tools; sed -i 's/build_project riscv-gnu-toolchain/build_project riscv-gnu-toolchain --enable-multilib/' build.sh
 	cd rocket-chip/riscv-tools; ./build.sh | tee $@.log
 
-#build-riscv32:
-#	mkdir -p rocket-chip/riscv-tools/riscv-gnu-toolchain/build32
-#	cd rocket-chip/riscv-tools/riscv-gnu-toolchain/build32; ../configure --with-xlen=32 --enable-multilib --prefix=$(RISCV); make
-
-build-riscv32:
-	cd rocket-chip/riscv-tools/riscv-gnu-toolchain
-
 clean:
 	rm -rf rocket-chip
