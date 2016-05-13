@@ -47,7 +47,7 @@ int square(int c)
   return c*c;
 }
 
-#define ITERATION 2
+#define ITERATION 3
 
 int barrier_test_simple() {
 	// Every core doing same # of instructions before reaching to the barrier.
