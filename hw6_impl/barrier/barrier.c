@@ -1,5 +1,5 @@
 #include "barrier.h"
-#include "bsg_manycore_2x2.h"
+#include "bsg_manycore.h"
 
 int barrier_array[bsg_tiles_X][bsg_tiles_Y]; // Should be syncronized each other
 int barrier_count; // Locally maintained

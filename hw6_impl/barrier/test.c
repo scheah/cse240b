@@ -1,5 +1,5 @@
 // change this header if the machine is not 4x4!
-#include "bsg_manycore_2x2.h"
+#include "bsg_manycore.h"
 #include "barrier.h"
 
 // these are private variables

@@ -1,5 +1,5 @@
 #include "prodcons.h"
-#include "bsg_manycore_2x2.h"
+#include "bsg_manycore.h"
 
 // Destination tiles
 int dest_x;
