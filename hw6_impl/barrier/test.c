@@ -9,6 +9,10 @@
 int bsg_x = -1;
 int bsg_y = -1;
 
+void testtest() {
+	asm volatile("sbreak");
+}
+
 int bsg_set_tile_x_y()
 {
   // everybody stores to tile 0,0
@@ -54,15 +58,15 @@ int barrier_test_simple() {
 	int i, t;
 
 	for (i = 0; i < ITERATION; ++i) {
-		for (t = 0; t < 4; ++t) {
-			bsg_remote_ptr_io_store(0,0x2000+bsg_x*0x04+bsg_y*0x10,0);
-		}
+		//for (t = 0; t < 4; ++t) {
+		//	bsg_remote_ptr_io_store(0,0x2000+bsg_x*0x04+bsg_y*0x10,0);
+		//}
 
-		bsg_remote_ptr_io_store(0,0x3000,bsg_x);
-		bsg_remote_ptr_io_store(0,0x3004,bsg_y);
+		//bsg_remote_ptr_io_store(0,0x3000,bsg_x);
+		//bsg_remote_ptr_io_store(0,0x3004,bsg_y);
 		barrier(bsg_x, bsg_y);
-		bsg_remote_ptr_io_store(0,0x4000,bsg_x);
-		bsg_remote_ptr_io_store(0,0x4004,bsg_y);
+		//bsg_remote_ptr_io_store(0,0x4000,bsg_x);
+		//bsg_remote_ptr_io_store(0,0x4004,bsg_y);
 	}
 }
 
@@ -90,6 +94,7 @@ int barrier_test_complex() {
 
 int main()
 {
+//testtest();
   bsg_set_tile_x_y();
 
   bsg_remote_ptr_io_store(0,0x1260,bsg_x);
@@ -97,8 +102,8 @@ int main()
 
   // Test barrier library
   {
-	  //barrier_test_simple();
-	  barrier_test_complex();
+	  barrier_test_simple();
+	  //barrier_test_complex();
   }
 
   if ((bsg_x == bsg_tiles_X-1) && (bsg_y == bsg_tiles_Y-1))
