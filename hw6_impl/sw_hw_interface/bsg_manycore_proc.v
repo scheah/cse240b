@@ -298,6 +298,7 @@ endmodule
 
 
 // Yeseong: Hook load instruction & generate the data ///////////////////////////
+`include "bsg_manycore_addr.vh"
 module bsg_manycore_magic_load #(
                                  magic_num_p    = 1
                                  , x_cord_width_p   = "inv"
@@ -310,8 +311,9 @@ module bsg_manycore_magic_load #(
    (input   clk_i
     , input reset_i
 
-	// Magic address reference signal
-	, input [magic_num_p-1:0][addr_width_p-y_cord_width_p-x_cord_width_p-2:0] magic_ref_addr_i
+	// Magic address reference/data signal
+	// (ref width should be same to addr of addr_docode_s in bsg_manycore_addr.vh)
+	, input [magic_num_p-1:0][(addr_width_p-y_cord_width_p-x_cord_width_p-1)-1:0] magic_ref_addr_i 
 	, input [magic_num_p-1:0][data_width_p-1:0] magic_data_i
 
 	// address of instruction from core
@@ -331,14 +333,7 @@ module bsg_manycore_magic_load #(
 	);
 
 	// Requested address
-	// NOTE: It must be same to the structure of the encoder (see bsg_manycore_pkt_encode)
-	typedef struct packed {
-      logic       remote;
-      logic [y_cord_width_p-1:0] y_cord;
-      logic [x_cord_width_p-1:0] x_cord;
-      logic [addr_width_p-y_cord_width_p-x_cord_width_p-2:0] addr;
-	} addr_decode_s;
-
+	`declare_bsg_manycore_addr_s(addr_width_p,x_cord_width_p,y_cord_width_p);
 	addr_decode_s addr_decode;
 	assign addr_decode = addr_i;
 
@@ -381,6 +376,7 @@ module bsg_manycore_magic_load #(
 	logic [1:0][data_width_p-1:0]	hooked_core_mem_rdata;
 	assign hooked_core_mem_rv[0]		= core_mem_rv_i[0]; // Instruction memory
 	assign hooked_core_mem_rdata[0]		= core_mem_rdata_i[0];
+
 	always_comb // Select the matched magic data and send it (in the next cycle) 
 	begin
 		hooked_core_mem_rv[1]		= core_mem_rv_i[1];
