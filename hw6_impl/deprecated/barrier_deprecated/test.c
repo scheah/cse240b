@@ -102,8 +102,8 @@ int main()
 
   // Test barrier library
   {
-	  //barrier_test_simple();
-	  barrier_test_complex();
+	  barrier_test_simple();
+	  //barrier_test_complex();
   }
 
   if ((bsg_x == bsg_tiles_X-1) && (bsg_y == bsg_tiles_Y-1))

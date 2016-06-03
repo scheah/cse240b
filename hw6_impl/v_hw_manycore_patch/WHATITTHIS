@@ -1,0 +1,11 @@
+The source code included in this directory are patched implementations of bsg_manycore.
+
+- The patched part can be found using the comments "Yeseong".
+
+- It implements two things:
+1) A mechanism that allows a software to load a data value (i.e., 32-bit long in this architecture) from HW.
+A "remote load" with a magic address indicates this. For more details, see bsg_manycore_proc.v
+
+2) A mechanism that checks if there's any remote stores in the network.
+A software can access it as a integer variable (0 or 1) through the first mechnism,
+where the magic address is definded by "A1_9AC".
