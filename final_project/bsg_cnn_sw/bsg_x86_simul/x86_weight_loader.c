@@ -7,7 +7,7 @@
 #include <memory.h>
 
 const char* MAGIC = "APPROXCNN-V1.0######"; // Must be 20 bytes
-const char* filename = "approxCNN/nn_learned.cnn";
+const char* filename = "nn_learned.cnn";
 
 float* loaded_ww[7];
 float* loaded_bb[7];
