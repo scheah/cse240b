@@ -100,7 +100,7 @@ void init_layers(int tile_x, int tile_y) {
 			L1_B_SIZE);
 
 #ifdef BSG_X86_SIMUL // Buffer size check
-	barrier();
+	barrier(tile_x, tile_y);
 	if (tile_x == 0 && tile_y == 0) {
 		test_last_buf_size(L1_BIN_SIZE, L1_W_SIZE, L1_B_SIZE);
 		max_output_buf_size = get_max_output_buf_size(
@@ -114,7 +114,7 @@ void init_layers(int tile_x, int tile_y) {
 				total_buf_size);
 	}
 
-	barrier();
+	barrier(tile_x, tile_y);
 #endif
 
 	// - Layer 2
@@ -123,12 +123,12 @@ void init_layers(int tile_x, int tile_y) {
 			tile_x, tile_y, &(BSG_VAR_SEL(layer2_mp)));
 
 #ifdef BSG_X86_SIMUL
-	barrier();
+	barrier(tile_x, tile_y);
 	if (tile_x == 0 && tile_y == 0) {
 		max_output_buf_size = get_max_output_buf_size(
 				&(BSG_VAR_SEL(layer2_mp)), max_output_buf_size);
 	}
-	barrier();
+	barrier(tile_x, tile_y);
 #endif
 
 	// - Layer 3
@@ -144,7 +144,7 @@ void init_layers(int tile_x, int tile_y) {
 			L3_B_SIZE);
 
 #ifdef BSG_X86_SIMUL // Buffer size check
-	barrier();
+	barrier(tile_x, tile_y);
 	if (tile_x == 0 && tile_y == 0) {
 		test_last_buf_size(L3_BIN_SIZE, L3_W_SIZE, L3_B_SIZE);
 		max_output_buf_size = get_max_output_buf_size(
@@ -157,7 +157,7 @@ void init_layers(int tile_x, int tile_y) {
 		printf("size of weights until L3: %d\n",
 				total_buf_size);
 	}
-	barrier();
+	barrier(tile_x, tile_y);
 #endif
 
 	// - Layer 4
@@ -166,12 +166,12 @@ void init_layers(int tile_x, int tile_y) {
 			tile_x, tile_y, &(BSG_VAR_SEL(layer4_mp)));
 
 #ifdef BSG_X86_SIMUL
-	barrier();
+	barrier(tile_x, tile_y);
 	if (tile_x == 0 && tile_y == 0) {
 		max_output_buf_size = get_max_output_buf_size(
 				&(BSG_VAR_SEL(layer4_mp)), max_output_buf_size);
 	}
-	barrier();
+	barrier(tile_x, tile_y);
 #endif
 
 	// - Layer 5
@@ -187,7 +187,7 @@ void init_layers(int tile_x, int tile_y) {
 			L5_B_SIZE);
 
 #ifdef BSG_X86_SIMUL // Buffer size check
-	barrier();
+	barrier(tile_x, tile_y);
 	if (tile_x == 0 && tile_y == 0) {
 		test_last_buf_size(L5_BIN_SIZE, L5_W_SIZE, L5_B_SIZE);
 		max_output_buf_size = get_max_output_buf_size(
@@ -200,7 +200,7 @@ void init_layers(int tile_x, int tile_y) {
 		printf("size of weights until L5: %d\n",
 				total_buf_size);
 	}
-	barrier();
+	barrier(tile_x, tile_y);
 #endif
 
 	// - Layer 6
@@ -208,7 +208,7 @@ void init_layers(int tile_x, int tile_y) {
 			100, 10,
 			tile_x, tile_y, &(BSG_VAR_SEL(layer6_fc)));
 #ifdef BSG_X86_SIMUL // Buffer size check
-	barrier();
+	barrier(tile_x, tile_y);
 	if (tile_x == 0 && tile_y == 0) {
 		if (max_output_buf_size < (BSG_VAR_SEL(layer6_fc)).totalsize) {
 			max_output_buf_size = (BSG_VAR_SEL(layer6_fc)).totalsize;
@@ -218,7 +218,7 @@ void init_layers(int tile_x, int tile_y) {
 			printf("WARNING: max_output_buf_size = %d\n", max_output_buf_size);
 		}
 	}
-	barrier();
+	barrier(tile_x, tile_y);
 #endif
 
 	// - Layer 7
@@ -228,7 +228,7 @@ void init_layers(int tile_x, int tile_y) {
 }
 
 
-inline float_tt* remote_input_buffer(sweep_path* s) {
+inline volatile float_tt* remote_input_buffer(sweep_path* s) {
 	if (s->dest_tile_x == -1)
 		return (float_tt*)0;
 
@@ -335,7 +335,9 @@ void body(int tile_x, int tile_y) {
 	if (tile_x == 0 && tile_y == 0)
 		bsg_print_time();
 	init_layers(tile_x, tile_y);	
-	barrier();
+	if (tile_x == 0 && tile_y == 0)
+		bsg_print_time();
+	barrier(tile_x, tile_y);
 
 	// 2. Forward layers
 	if (tile_x == 0 && tile_y == 0)

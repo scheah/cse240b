@@ -80,7 +80,7 @@ void forward_maxpool(
 		}
 	}
 
-	barrier();
+	barrier(tile_x, tile_y);
 
 	// Copy the local output to the input
 	// and propogate the local output values

@@ -7,6 +7,7 @@
 #include "bsg_util_x86_simul.h"
 #else
 #include "bsg_manycore.h"
+#include "bsg_util_non_simul.h"
 #endif
 
 #include "bsg_manycore_float_ext.h"
@@ -42,7 +43,7 @@ void forward_fullcon(
 {
 	// Not use pallelization
 	if (tile_x != 0 || tile_y != 0) {
-		barrier(); // To synchronize in loading weights of core (0,0)
+		barrier(tile_x, tile_y); // To synchronize in loading weights of core (0,0)
 		return;
 	}
 
@@ -55,7 +56,7 @@ void forward_fullcon(
 		}
 		load_b(l->layer_idx, out, &b_[out]);
 	}
-	barrier(); // !!!: All remote stores are finished
+	barrier(tile_x, tile_y); // !!!: All remote stores are finished
 
 	// Compute full connected neurons
 	float_tt dot_product;

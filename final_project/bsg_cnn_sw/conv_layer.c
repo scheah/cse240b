@@ -6,6 +6,7 @@
 #include "bsg_util_x86_simul.h"
 #else
 #include "bsg_manycore.h"
+#include "bsg_util_non_simul.h"
 #endif
 
 #include "conv_layer.h"
@@ -232,7 +233,7 @@ void forward_conv(
 		++b_idx;
 	}
 
-	barrier();
+	barrier(tile_x, tile_y);
 
 	// Copy the local output to the input
 	// and propogate the local output values
