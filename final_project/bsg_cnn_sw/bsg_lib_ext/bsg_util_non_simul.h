@@ -8,4 +8,6 @@
 #define BSG_VAR_SEL(v)	v
 #define _BSG_TILE_ARG_
 
+#include "barrier.h"
+
 #endif

@@ -230,7 +230,7 @@ void init_layers(int tile_x, int tile_y) {
 
 inline float_tt* remote_input_buffer(sweep_path* s) {
 	if (s->dest_tile_x == -1)
-		return NULL;
+		return (float_tt*)0;
 
 	return bsg_remote_ptr(s->dest_tile_x, s->dest_tile_y, input_buf);
 }

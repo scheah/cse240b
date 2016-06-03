@@ -3,8 +3,8 @@
 #ifndef _CNN_CONF_H_
 #define _CNN_CONF_H_
 
-#define BSG_X86_SIMUL // Run on x86
-//#define TEST_WITH_INT // Test using integer instead of float
+//#define BSG_X86_SIMUL // Run on x86
+#define TEST_WITH_INT // Test using integer instead of float
 
 // type used in computation
 #ifndef TEST_WITH_INT

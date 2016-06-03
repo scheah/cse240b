@@ -10,6 +10,8 @@
 #include "bsg_token_queue_x86_simul.h"
 #else
 #include "bsg_manycore.h"
+#include "bsg_set_tile_x_y.h"
+#include "bsg_util_non_simul.h"
 #include "bsg_token_queue.h"
 #endif
 
