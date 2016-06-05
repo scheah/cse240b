@@ -1,0 +1,42 @@
+CSE240B: Convolution Neural Network
+Digital number recognition (MNIST dataset)
+
+
+
+- How to run the CNN implementation on X86
+1. Go to "bsg_cnn_sw" directory
+2. Uncomment "BSG_X86_SIMUL" macro in "cnn_conf.h" file
+3. Copy "Makefile.x86" to "Makefile"
+4. Make and run "main"!
+
+
+
+- How to run the CNN implementation on BSG manycore
+
+1. Patch the bsg_manycore system verilog files (to use barrier function)
+1.1 Find .v files in "../hw6_impl/v_hw_manycore_patch"
+	and apply the changes in "bsg_manycore/v/"
+1.2. See "WHATISTHIS" file in the same directory for more details
+
+2. Patch the bsg_manycore_lib c header file (a small patch of the token queue for compile)
+2.1 Find ".h" file in "./bsg_lib_patch"
+	and apply the changes in "bsg_manycore/software/bsg_manycore_lib"
+
+3. Change memory configuration of spmd to ensure sufficient memory space
+3.1 Recommend to make backup for modified files :)
+3.2 in "bsg_manycore/testbenches/basic/test_bsg_manycore.v", find and replace as follows:
+`define MEM_SIZE   131072
+`define BANK_SIZE  1024   // in words
+`define BANK_NUM   32  
+3.3 in "bsg_manycore/software/mk/Makefile.builddefs", find and replace as follows:
+BSG_MANYCORE_BANKS=32
+BSG_MANYCORE_BANKSIZE=4096
+3.4 in "/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/test.ld",
+	find and replace as follows:
+. = 0x10000;
+
+4. Copy "bsg_cnn_sw" directory to "bsg_manycore/software/spmd"
+
+5. Check that the "BSG_X86_SIMUL" macro is commented in "cnn_conf.h" file
+
+5. Make, then it runs "main!"
