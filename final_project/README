@@ -39,4 +39,6 @@ BSG_MANYCORE_BANKSIZE=4096
 
 5. Check that the "BSG_X86_SIMUL" macro is commented in "cnn_conf.h" file
 
-5. Make, then it runs "main!"
+6. Copy "Makefile.bsg" to "Makefile"
+
+7. Make, then it runs "main!"
