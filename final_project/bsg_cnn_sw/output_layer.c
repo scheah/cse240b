@@ -45,6 +45,8 @@ int forward_output(
 	int max_idx = -1;
 	float_tt max_value = 0;
 	for (in = 0; in < l->in_depth_; ++in) {
+		//bsg_remote_ptr_io_store(0, 0x4444, input_[in]);
+
 		if (max_idx == -1 || max_value < input_[in]) {
 			max_idx = in;
 			max_value = input_[in];

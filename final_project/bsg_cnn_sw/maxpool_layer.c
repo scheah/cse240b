@@ -6,6 +6,8 @@
 #include "bsg_util_x86_simul.h"
 #else
 #include "bsg_manycore.h"
+#include "bsg_set_tile_x_y.h"
+#include "bsg_util_non_simul.h"
 #endif
 
 #include "maxpool_layer.h"
@@ -62,6 +64,7 @@ void forward_maxpool(
 	// Compute outputs for this tile
 	get_start_end_out(l, tile_id, &start_out, &end_out);
 
+	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 1);
 	for (outputs_idx = start_out; outputs_idx < end_out; ++outputs_idx) {
 		local_outputs_idx = outputs_idx - start_out;
 		get_mp_neuron(l, outputs_idx, &out, &h_, &w_);
@@ -81,6 +84,8 @@ void forward_maxpool(
 	}
 
 	barrier(tile_x, tile_y);
+
+	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 2);
 
 	// Copy the local output to the input
 	// and propogate the local output values
@@ -105,5 +110,7 @@ void forward_maxpool(
 			start_idx_lst, end_idx_lst,
 			s_next, s_prev, 
 			input_, input_prev_);
+
+	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 3);
 }
 

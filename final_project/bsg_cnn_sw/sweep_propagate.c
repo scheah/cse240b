@@ -2,6 +2,29 @@
 // Propagation lib to broadcast new input values through network by traveling per hop
 // It uses the token queue.
 
+// In this implementation, we propagate the information in a `zigzag' order.
+// For example, if the tiles are 3x3, we traverse with the buffers twice:
+// - First run
+// 0 -> 1 -> 2
+//           |
+//           v
+// 3 <- 4 <- 5
+// |
+// v
+// 6 -> 7 -> 8
+//
+// - Second run
+// 0 <- 1 <- 2
+//           ^
+//           |
+// 3 -> 4 -> 5
+// ^
+// |
+// 6 <- 7 <- 8
+//
+// In order to increase performance of this synchronization,
+// each tile concurrently sends a piece of the buffer of each tile as soon as it receives.
+
 #include "cnn_conf.h"
 
 #ifdef BSG_X86_SIMUL
@@ -12,6 +35,7 @@
 #include "bsg_manycore.h"
 #include "bsg_set_tile_x_y.h"
 #include "bsg_util_non_simul.h"
+#include "bsg_token_queue_structure.h"
 #include "bsg_token_queue.h"
 #endif
 
@@ -102,20 +126,6 @@ void init_sweep_path(
 		s_next->conn_rv = bsg_tq_receive_connection(tq_bwd, s_next->dest_tile_x, s_next->dest_tile_y
 				_BSG_TILE_ARG_);
 	}
-
-	//if (tile_x == 0 && tile_y == 3) {
-	//	printf("P %d %d %d\n", s_prev->dest_tile_x, s_prev->dest_tile_y, bsg_x_y_to_id(s_prev->dest_tile_x,s_prev->dest_tile_y));
-	//	for (i = 0; i < bsg_num_tiles; ++i) {
-	//		printf("%d ", s_prev->tile_mask[i]);
-	//	}
-	//	printf("\n");
-	//	printf("N %d %d %d\n", s_next->dest_tile_x, s_next->dest_tile_y, bsg_x_y_to_id(s_next->dest_tile_x,s_next->dest_tile_y));
-	//	for (i = 0; i < bsg_num_tiles; ++i) {
-	//		printf("%d ", s_next->tile_mask[i]);
-	//	}
-	//	printf("\n");
-
-	//}
 }
 
 void sweep_propagate(
@@ -134,18 +144,11 @@ void sweep_propagate(
 		if (s_from->tile_mask[i] == 1) { // For the tile data needed to be sent
 			// 1. Wait until get it (if required)
 			if (s_from->dest_tile_x != -1 && i != tile_id) {
-				//printf("W %d %d <- %d %d (%x)\n",
-				//		tile_x, tile_y, s_from->dest_tile_x, s_from->dest_tile_y,
-				//		&s_from->conn_rv.local_ptr->send
-				//);
 				bsg_tq_receiver_confirm(s_from->conn_rv,1); 
 			}
 
 			// 2. Send to the next
 			if (s_to->dest_tile_x != -1) {
-				//printf("%d %d (%x) [%d]\n", tile_x, tile_y,
-				//		s_to->conn_sd.remote_ptr, s_from->mask_count
-				//);
 				bsg_tq_sender_confirm(s_to->conn_sd, s_from->mask_count, 1); 
 
 				for (idx = start_idx_lst[i]; idx < end_idx_lst[i]; ++idx) {

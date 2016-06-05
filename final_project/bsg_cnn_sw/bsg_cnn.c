@@ -65,6 +65,110 @@ layer_t BSG_VAR(layer7_out);
 
 // End of Layer Data =================================================================
 
+
+// Debug code
+#ifndef BSG_X86_SIMUL
+#ifdef MEMORY_BUF_TEST 
+void memory_buf_test() {
+	int i, tmp;
+
+	bsg_print_time();
+	tmp = 0;
+	for (i = 0; i < LAYER_INPUT_SIZE; ++i) {
+		tmp += input_buf[i];
+	}
+
+	bsg_print_time();
+	for (i = 0; i < LAYER_OUTPUT_SIZE; ++i) {
+		tmp += output_buf[i];
+	}
+
+	bsg_print_time();
+	for (i = 0; i < L1_BIN_SIZE; ++i) {
+		tmp += l1_w_global_bin[i];
+		tmp += l1_w_local_bin[i];
+	}
+
+	bsg_print_time();
+	for (i = 0; i < L1_W_SIZE; ++i) {
+		tmp += l1_W[i];
+	}
+
+	bsg_print_time();
+	for (i = 0; i < L1_B_SIZE; ++i) {
+		tmp += l1_B[i];
+	}
+
+	bsg_print_time();
+	for (i = 0; i < L3_BIN_SIZE; ++i) {
+		tmp += l3_w_global_bin[i];
+		tmp += l3_w_local_bin[i];
+	}
+
+	bsg_print_time();
+	for (i = 0; i < L3_W_SIZE; ++i) {
+		tmp += l3_W[i];
+	}
+
+	bsg_print_time();
+	for (i = 0; i < L3_B_SIZE; ++i) {
+		tmp += l3_B[i];
+	}
+
+	bsg_print_time();
+	for (i = 0; i < L5_BIN_SIZE; ++i) {
+		tmp += l5_w_global_bin[i];
+		tmp += l5_w_local_bin[i];
+	}
+
+	bsg_print_time();
+	for (i = 0; i < L5_W_SIZE; ++i) {
+		tmp += l5_W[i];
+	}
+
+	bsg_print_time();
+	for (i = 0; i < L5_B_SIZE; ++i) {
+		tmp += l5_B[i];
+	}
+
+	bsg_remote_ptr_io_store(0, 0x1234, tmp);
+}
+#endif // MEMORY_BUF_TEST
+
+// Sweep test: only for debug
+#ifdef SWEEP_PROPAGATION_TEST
+int sweep_test_buf[bsg_num_tiles];
+inline volatile float_tt* remote_test_buffer(sweep_path* s) {
+	if (s->dest_tile_x == -1)
+		return (float_tt*)0;
+
+	return bsg_remote_ptr(s->dest_tile_x, s->dest_tile_y, sweep_test_buf);
+}
+
+void sweep_test (int tile_x, int tile_y) {
+	int i;
+	float_tt* input_prev_ = (float_tt*)remote_test_buffer(&BSG_VAR_SEL(sweep_prev));
+	float_tt* input_next_ = (float_tt*)remote_test_buffer(&BSG_VAR_SEL(sweep_next));
+
+	int start_idx_lst[bsg_num_tiles], end_idx_lst[bsg_num_tiles];
+	for (i = 0; i < bsg_num_tiles; ++i) {
+		start_idx_lst[i] = i;
+		end_idx_lst[i] = i+1;
+	}
+
+	sweep_propagate(tile_x, tile_y,
+			start_idx_lst, end_idx_lst,
+			&sweep_prev, &sweep_next,
+			sweep_test_buf, input_next_);
+
+	sweep_propagate(tile_x, tile_y,
+			start_idx_lst, end_idx_lst,
+			&sweep_next, &sweep_prev, 
+			sweep_test_buf, input_prev_);
+}
+#endif  // SWEEP_PROPAGATION_TEST
+#endif
+
 #ifdef BSG_X86_SIMUL // Buffer size check
 int get_max_output_buf_size(layer_t* l, int max_size) {
 	int i, cur_size;
@@ -99,6 +203,8 @@ void init_layers(int tile_x, int tile_y) {
 			BSG_VAR_SEL(l1_B),
 			L1_B_SIZE);
 
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+
 #ifdef BSG_X86_SIMUL // Buffer size check
 	barrier(tile_x, tile_y);
 	if (tile_x == 0 && tile_y == 0) {
@@ -122,6 +228,8 @@ void init_layers(int tile_x, int tile_y) {
 			28, 28, 6,
 			tile_x, tile_y, &(BSG_VAR_SEL(layer2_mp)));
 
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+
 #ifdef BSG_X86_SIMUL
 	barrier(tile_x, tile_y);
 	if (tile_x == 0 && tile_y == 0) {
@@ -142,6 +250,8 @@ void init_layers(int tile_x, int tile_y) {
 			L3_W_SIZE,
 			BSG_VAR_SEL(l3_B),
 			L3_B_SIZE);
+
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
 
 #ifdef BSG_X86_SIMUL // Buffer size check
 	barrier(tile_x, tile_y);
@@ -165,6 +275,8 @@ void init_layers(int tile_x, int tile_y) {
 			10, 10, 16,
 			tile_x, tile_y, &(BSG_VAR_SEL(layer4_mp)));
 
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+
 #ifdef BSG_X86_SIMUL
 	barrier(tile_x, tile_y);
 	if (tile_x == 0 && tile_y == 0) {
@@ -185,6 +297,8 @@ void init_layers(int tile_x, int tile_y) {
 			L5_W_SIZE,
 			BSG_VAR_SEL(l5_B),
 			L5_B_SIZE);
+
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
 
 #ifdef BSG_X86_SIMUL // Buffer size check
 	barrier(tile_x, tile_y);
@@ -207,6 +321,9 @@ void init_layers(int tile_x, int tile_y) {
 	init_fullcon_layer(5,
 			100, 10,
 			tile_x, tile_y, &(BSG_VAR_SEL(layer6_fc)));
+
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+
 #ifdef BSG_X86_SIMUL // Buffer size check
 	barrier(tile_x, tile_y);
 	if (tile_x == 0 && tile_y == 0) {
@@ -225,6 +342,8 @@ void init_layers(int tile_x, int tile_y) {
 	init_output_layer(6,
 			10,
 			tile_x, tile_y, &(BSG_VAR_SEL(layer7_out)));
+
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
 }
 
 
@@ -236,8 +355,13 @@ inline volatile float_tt* remote_input_buffer(sweep_path* s) {
 }
 
 int forward_layers(int tile_x, int tile_y) {
-	float_tt* input_prev = remote_input_buffer(&BSG_VAR_SEL(sweep_prev));
-	float_tt* input_next = remote_input_buffer(&BSG_VAR_SEL(sweep_next));
+	float_tt* input_prev = (float_tt*)remote_input_buffer(&BSG_VAR_SEL(sweep_prev));
+	float_tt* input_next = (float_tt*)remote_input_buffer(&BSG_VAR_SEL(sweep_next));
+
+	int tile_id = bsg_x_y_to_id(tile_x, tile_y);
+
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+	if (tile_x == 0 && tile_y == 0) bsg_remote_ptr_io_store(0, 0x1444, 0);
 
 	// - Layer 1
 	forward_conv(
@@ -252,6 +376,9 @@ int forward_layers(int tile_x, int tile_y) {
 			input_prev, input_next
 	);
 
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+	if (tile_x == 0 && tile_y == 0) bsg_remote_ptr_io_store(0, 0x1444, 1);
+
 	// - Layer 2
 	forward_maxpool(
 			tile_x, tile_y, &(BSG_VAR_SEL(layer2_mp)),
@@ -259,6 +386,9 @@ int forward_layers(int tile_x, int tile_y) {
 			&BSG_VAR_SEL(sweep_prev), &BSG_VAR_SEL(sweep_next),
 			input_prev, input_next
 	);
+
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+	if (tile_x == 0 && tile_y == 0) bsg_remote_ptr_io_store(0, 0x1444, 2);
 
 	// - Layer 3
 	forward_conv(
@@ -273,6 +403,9 @@ int forward_layers(int tile_x, int tile_y) {
 			input_prev, input_next
 	);
 
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+	if (tile_x == 0 && tile_y == 0) bsg_remote_ptr_io_store(0, 0x1444, 3);
+
 	// - Layer 4
 	forward_maxpool(
 			tile_x, tile_y, &(BSG_VAR_SEL(layer4_mp)),
@@ -280,6 +413,9 @@ int forward_layers(int tile_x, int tile_y) {
 			&BSG_VAR_SEL(sweep_prev), &BSG_VAR_SEL(sweep_next),
 			input_prev, input_next
 	);
+
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+	if (tile_x == 0 && tile_y == 0) bsg_remote_ptr_io_store(0, 0x1444, 4);
 
 	// - Layer 5
 	forward_conv(
@@ -293,6 +429,9 @@ int forward_layers(int tile_x, int tile_y) {
 			&BSG_VAR_SEL(sweep_prev), &BSG_VAR_SEL(sweep_next),
 			input_prev, input_next
 	);
+
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+	if (tile_x == 0 && tile_y == 0) bsg_remote_ptr_io_store(0, 0x1444, 5);
 
 	// - Layer 6
 	// Here, we use a trick to process this layter without additional weight buffers:
@@ -316,6 +455,9 @@ int forward_layers(int tile_x, int tile_y) {
 			l6_W, l6_b
 	);
 
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+	if (tile_x == 0 && tile_y == 0) bsg_remote_ptr_io_store(0, 0x1444, 6);
+
 	// - Layer 7: Output layer
 	int result = 
 		forward_output(
@@ -324,24 +466,28 @@ int forward_layers(int tile_x, int tile_y) {
 										// So, output_buf has the input of layer 7.
 				);
 
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
+	if (tile_x == 0 && tile_y == 0) bsg_remote_ptr_io_store(0, 0x1444, 7);
+
 	return result;
 }
 
 void body(int tile_x, int tile_y) {
 	// Init propagation for output-to-input buffer
 	init_sweep_path(tile_x, tile_y, &(BSG_VAR_SEL(sweep_prev)), &(BSG_VAR_SEL(sweep_next)));
+#ifndef BSG_X86_SIMUL
+#ifdef SWEEP_PROPAGATION_TEST
+	sweep_test(tile_x, tile_y);
+#endif
+#endif
 
 	// 1. Init layers
-	if (tile_x == 0 && tile_y == 0)
-		bsg_print_time();
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
 	init_layers(tile_x, tile_y);	
-	if (tile_x == 0 && tile_y == 0)
-		bsg_print_time();
+	if (tile_x == 0 && tile_y == 0) bsg_print_time();
 	barrier(tile_x, tile_y);
 
 	// 2. Forward layers
-	if (tile_x == 0 && tile_y == 0)
-		bsg_print_time();
 	int result = forward_layers(tile_x, tile_y);
 
 	// 3. Print output
@@ -360,6 +506,9 @@ int main() {
 	init_x86_simul(body);
 #else
 	bsg_set_tile_x_y();
+#ifdef MEMORY_BUF_TEST 
+	memory_buf_test();
+#endif
 	body(bsg_x, bsg_y);
 #endif
 

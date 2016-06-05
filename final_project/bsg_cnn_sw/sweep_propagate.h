@@ -7,10 +7,10 @@
 #include "bsg_token_queue_structure.h"
 
 typedef struct _sweep_path_{
-	int dest_tile_x;
-	int dest_tile_y;
-	int tile_mask[bsg_num_tiles];
-	int mask_count;
+	int dest_tile_x; 
+	int dest_tile_y; 
+	int tile_mask[bsg_num_tiles]; 
+	int mask_count; 
 	bsg_token_connection_t conn_rv;
 	bsg_token_connection_t conn_sd;
 } sweep_path;

@@ -185,6 +185,7 @@ void forward_conv(
 	b_idx = 0;
 	get_start_end_out(l, tile_id, &start_out, &end_out);
 
+	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 1);
 	for (outputs_idx = start_out; outputs_idx < end_out; ++outputs_idx) {
 		local_outputs_idx = outputs_idx - start_out;
 		get_cnn_neuron(l, outputs_idx, &out, &h_, &w_);
@@ -235,6 +236,8 @@ void forward_conv(
 
 	barrier(tile_x, tile_y);
 
+	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 2);
+
 	// Copy the local output to the input
 	// and propogate the local output values
 	for (outputs_idx = start_out; outputs_idx < end_out; ++outputs_idx) {
@@ -254,16 +257,19 @@ void forward_conv(
 			s_prev, s_next,
 			input_, input_next_);
 
+
 	// Backward
 	sweep_propagate(tile_x, tile_y,
 			start_idx_lst, end_idx_lst,
 			s_next, s_prev, 
 			input_, input_prev_);
 
+	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 3);
+
 	// Debug: Result check
 	//if (l->layer_idx == 4 && tile_x == 0 && tile_y == 0) {
 	//	for (i = 0; i < l->totalsize; ++i) {
-	//		printf("VVV\t%d\t%f\n", i, input_[i]);
+	//		bsg_remote_ptr_io_store(0, 0x4444, input_[i]);
 	//	}
 	//}
 }
