@@ -42,3 +42,20 @@ BSG_MANYCORE_BANKSIZE=4096
 6. Copy "Makefile.bsg" to "Makefile"
 
 7. Make, then it runs "main!"
+
+
+- How to intepret the result?
+Using either IO(bsg) or printf (x86):
+the program shows two values for two addresses at the end of the log, 
+"00001000": The ground-truth value of the image defined in "test_input.c"
+"00002000": The recognized digit value computed on CNN
+
+Thus, they should be same if the CNN correctly recognizes.
++) In the integer test which uses "test_input_int.c" and randomly filled weights,
+the CNN should recognize the value by "9" through its computation.
+
+- How to change the input files (images):
+The image pixels are defined as an floating-point array.
+There are five test_input files of images, and one of them can be selected using "run_input.sh" script.
+In x86, we tested that the CNN can recognize their digits of all 5 files perfectly.
+
