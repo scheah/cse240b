@@ -22,7 +22,7 @@ Digital number recognition (MNIST dataset)
 2.1 Find ".h" file in "./bsg_lib_patch"
 	and apply the changes in "bsg_manycore/software/bsg_manycore_lib"
 
-3. Change memory configuration of spmd to ensure sufficient memory space
+3. Change memory configuration of spmd to ensure sufficient memory space and execution cycles
 3.1 Recommend to make backup for modified files :)
 3.2 in "bsg_manycore/testbenches/basic/test_bsg_manycore.v", find and replace as follows:
 `define MEM_SIZE   131072
@@ -34,14 +34,24 @@ BSG_MANYCORE_BANKSIZE=4096
 3.4 in "/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/test.ld",
 	find and replace as follows:
 . = 0x10000;
+3.5 Increase max cycles to a big number to avoid early program termination.
+	Two ways are available:
+3.5.1 Change MAX_CYCLES in "testbenches/basic/test_bsg_manycore.v"
+3.5.2 Just remove a statement of "if (trace_count > max_cycles_p) begin ... end" from
+	"testbenches/common/v/bsg_nonsynth_manycore_monitor.v"
 
-4. Copy "bsg_cnn_sw" directory to "bsg_manycore/software/spmd"
+4. Patch the testbench files of the bsg_manycore system verilog (to use weight loader)
+4.1 Find two .v files in "./bsg_test_manycore_patch",
+	and apply the changes in "testbenches/basic" and "testbenches/common/v".
+4.2 The changes are marked by "CNN" comments.
 
-5. Check that the "BSG_X86_SIMUL" macro is commented in "cnn_conf.h" file
+5. Copy "bsg_cnn_sw" directory to "bsg_manycore/software/spmd"
 
-6. Copy "Makefile.bsg" to "Makefile"
+6. Check that the "BSG_X86_SIMUL" macro is commented in "cnn_conf.h" file
 
-7. Make, then it runs "main!"
+7. Copy "Makefile.bsg" to "Makefile"
+
+8. Make, then it runs "main!"
 
 
 - How to intepret the result?
