@@ -1,7 +1,24 @@
 BSG_LIB_EXT_PATH=./bsg_lib_ext
 
+# Used for weight loader ROM generation on x86
+BSG_X86_SIMUL_PATH=./bsg_x86_simul
+
+# Which types of ROM is used for the weight loader
+# See also CNN_WEIGHT_ROM of "test_bsg_manycore.v" 
+#USE_ACTUAL_ROM=1
+ifneq ($(USE_ACTUAL_ROM),)
+# If a real rom is used.
+BSG_CNN_WEIGHT_ROM = bsg_rom_cnn_weight
+else
+# If simulation-time file loader is used.
+BSG_CNN_WEIGHT_ROM=$(shell pwd)/weight_rom.dat
+endif
+
+
+
 bsg_tiles_X = 4
 bsg_tiles_Y = 4
+
 
 RISCV_GCC_EXTRA_OPTS ?= -O2 -I$(BSG_LIB_EXT_PATH)
 OBJECT_FILES=bsg_set_tile_x_y.o bsg_cnn.o sweep_propagate.o layer_common.o conv_layer.o maxpool_layer.o fullcon_layer.o output_layer.o $(BSG_LIB_EXT_PATH)/barrier.o
@@ -12,18 +29,32 @@ all: main.run
 main.riscv:  $(OBJECT_FILES) $(SPMD_COMMON_OBJECTS) ../common/crt.o
 	$(RISCV_LINK) $(OBJECT_FILES) -o $@ $(RISCV_LINK_OPTS)
 
+
+# WEIGHT GENERATOR -> either ROM or binary data file ################################
+ifneq ($(USE_ACTUAL_ROM),)
+genweight: weight2bin Makefile
+	./weight2bin > weightdata.bin
+	python ../../../../bsg_ip_cores/bsg_mem/bsg_ascii_to_rom.py weightdata.bin bsg_rom_cnn_weight zero > bsg_rom_cnn_weight.v
+	rm -f weightdata.bin
+
+weight2bin: weight2bin.c layer_common.c $(BSG_X86_SIMUL_PATH)/x86_weight_loader.c cnn_conf.h Makefile
+	gcc -o weight2bin weight2bin.c layer_common.c $(BSG_X86_SIMUL_PATH)/x86_weight_loader.c -I$(BSG_LIB_EXT_PATH) -I$(BSG_X86_SIMUL_PATH) -lm -DGEN_BIN -DDISABLE_VERBOSE -DBSG_X86_SIMUL -Dbsg_tiles_X=1 -Dbsg_tiles_Y=1 # Just run 1 core on X86
+
+else
+genweight: weight2bin Makefile
+	./weight2bin
+
+weight2bin: weight2bin.c layer_common.c $(BSG_X86_SIMUL_PATH)/x86_weight_loader.c cnn_conf.h Makefile
+	gcc -o weight2bin weight2bin.c layer_common.c $(BSG_X86_SIMUL_PATH)/x86_weight_loader.c -I$(BSG_LIB_EXT_PATH) -I$(BSG_X86_SIMUL_PATH) -lm -DDISABLE_VERBOSE -DBSG_X86_SIMUL -Dbsg_tiles_X=1 -Dbsg_tiles_Y=1 # Just run 1 core on X86
+
+endif
+
+########################################################################################
+
+
 clean:
 	-rm $(OBJECT_FILES) *.jou *.log *.pb bsg_rom_main.v main.riscv *.wdb main.bin main.hex
 	-rm -rf xsim.dir
 
 main.o: Makefile
-
-
-
-
-
-
-
-
-
 

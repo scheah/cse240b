@@ -6,6 +6,7 @@
 #ifdef BSG_X86_SIMUL
 #include "x86_weight_loader.h"
 #include "bsg_util_x86_simul.h"
+#include <math.h>
 #else
 #include "bsg_manycore.h"
 #endif
@@ -92,6 +93,7 @@ void get_start_end_out(layer_t* l, int tile_id, int* start_out, int* end_out) {
 	// TODO: LOAD W and B from IO
 	#endif
 #else // TEST_WITH_INT
+	#ifdef BSG_X86_SIMUL
 	// Fill testing numbers
 	void load_w(int layer_idx, int w_idx, float_tt* ptr) {
 		float_tt w = layer_idx + w_idx;
@@ -101,4 +103,33 @@ void get_start_end_out(layer_t* l, int tile_id, int* start_out, int* end_out) {
 		float_tt b = layer_idx + b_idx;
 		*ptr = b;
 	}
+	#else // On bsg, use the loader
+
+#define LOADER_CHANNEL 1 // Must be same to that one defined in test_bsg_manycore.v
+#define bsg_weight_ld_data(x,y,w_idx) (((int) ( \
+												((y) << (32-(bsg_noc_ybits)))             \
+												| ((x) << (32-bsg_noc_xbits-bsg_noc_ybits)) \
+												| ((int) (w_idx))                      \
+												) \
+									))
+	extern int bsg_x, bsg_y;
+
+	void load_w(int layer_idx, int w_idx, float_tt* ptr) {
+		if (layer_idx > 0) w_idx += 150;
+		if (layer_idx > 2) w_idx += 2400;
+		if (layer_idx > 4) w_idx += 40000;
+
+		bsg_remote_ptr_io_store(LOADER_CHANNEL,ptr,bsg_weight_ld_data(bsg_x, bsg_y, w_idx));
+	}
+
+	void load_b(int layer_idx, int b_idx, float_tt* ptr) {
+		b_idx += 150 + 2400 + 40000 + 1000;
+
+		if (layer_idx > 0) b_idx += 4704;
+		if (layer_idx > 2) b_idx += 1600;
+		if (layer_idx > 4) b_idx += 100;
+
+		bsg_remote_ptr_io_store(LOADER_CHANNEL,ptr,bsg_weight_ld_data(bsg_x, bsg_y, b_idx));
+	}
+	#endif
 #endif
