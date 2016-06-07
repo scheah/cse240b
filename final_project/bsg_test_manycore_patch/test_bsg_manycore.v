@@ -594,7 +594,7 @@ module bsg_manycore_cnn_weight_loader	#(num_tiles_x_p="inv"
         loader_sd_pkt.x_cord = data_cast.x_cord;
         loader_sd_pkt.y_cord = data_cast.y_cord;
 
-		// Absorb request only when outgoing fifos are empty
+		// Absorb request only when outgoing fifos are available
 		loader_ready = (reset_i == 0 & ver_ready_i[S] == {(num_tiles_x_p) {1'b1}});
 		loader_ver_ready_o = {
 								{((num_tiles_x_p-(LOADER_CHANNEL + 1))) {1'b1}},
