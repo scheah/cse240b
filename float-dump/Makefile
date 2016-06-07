@@ -1,10 +1,21 @@
-RISCV_GCC = ../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc
-RISCV_OBJDUMP = ../riscv-tools/riscv-install/bin/riscv64-unknown-elf-objdump
+SOFTFLOAT = ./softfloat
+SOFTFLOAT_INCLUDES = ./softfloat/include/
+SOFTFLOAT_OBJECTS = ./softfloat/objects/*.*
 
-dump: float-test.o 
-	$(RISCV_OBJDUMP) -d float-test.o > float-test.dump
+bsg_tiles_X = 4
+bsg_tiles_Y = 4
 
-float-test.o:
-	$(RISCV_GCC) float-test.c -c -o float-test.o 
+RISCV_GCC_EXTRA_OPTS ?= -O2 -I$(SOFTFLOAT) -I$(SOFTFLOAT_INCLUDES) -I$(SOFTFLOAT_OBJECTS) -I$(BSG_LIB_EXT_PATH)
+
+include ../Makefile.include
+
+all: main.run
+
+main.riscv:  $(SOFTFLOAT_OBJECTS) $(SPMD_COMMON_OBJECTS) ../common/crt.o
+	$(RISCV_LINK) $(SOFTFLOAT_OBJECTS) -o $@ $(RISCV_LINK_OPTS)
+
+main.o:
+	Makefile
+	 
 clean: 
 	rm *.o *.dump	
