@@ -14,21 +14,28 @@ else
 BSG_CNN_WEIGHT_ROM=$(shell pwd)/weight_rom.dat
 endif
 
+# Softfloat compile
+SOFTLOAT_SOURCE_DIR = ./berkeley-softfloat-3/source/
+SOFTFLOAT_BUILD_DIR = ./softfloat_build
 
+include $(SOFTFLOAT_BUILD_DIR)/Makefile.softfloat_def
 
+RISCV_GCC_EXTRA_OPTS += -I$(BSG_LIB_EXT_PATH)
+OBJECT_FILES=bsg_set_tile_x_y.o bsg_cnn.o sweep_propagate.o layer_common.o conv_layer.o maxpool_layer.o fullcon_layer.o output_layer.o $(BSG_LIB_EXT_PATH)/barrier.o
+
+# BSG compile
 bsg_tiles_X = 4
 bsg_tiles_Y = 4
-
-
-RISCV_GCC_EXTRA_OPTS ?= -O2 -I$(BSG_LIB_EXT_PATH)
-OBJECT_FILES=bsg_set_tile_x_y.o bsg_cnn.o sweep_propagate.o layer_common.o conv_layer.o maxpool_layer.o fullcon_layer.o output_layer.o $(BSG_LIB_EXT_PATH)/barrier.o
 include ../Makefile.include
 
 all: main.run
 
-main.riscv:  $(OBJECT_FILES) $(SPMD_COMMON_OBJECTS) ../common/crt.o
-	$(RISCV_LINK) $(OBJECT_FILES) -o $@ $(RISCV_LINK_OPTS)
+main.riscv: $(OBJECT_FILES) $(SOFTFLOAT_ARC_LIB) $(SPMD_COMMON_OBJECTS) ../common/crt.o
+	$(RISCV_LINK) $(OBJECT_FILES) $(SOFTFLOAT_ARC_LIB) -o $@ $(RISCV_LINK_OPTS)
 
+$(SOFTFLOAT_ARC_LIB):
+	cd $(SOFTFLOAT_BUILD_DIR) && $(MAKE)
+	cp $(SOFTFLOAT_BUILD_DIR)/$(SOFTFLOAT_ARC_LIB) .
 
 # WEIGHT GENERATOR -> either ROM or binary data file ################################
 ifneq ($(USE_ACTUAL_ROM),)
@@ -51,10 +58,11 @@ endif
 
 ########################################################################################
 
-
 clean:
-	-rm $(OBJECT_FILES) *.jou *.log *.pb bsg_rom_main.v main.riscv *.wdb main.bin main.hex
+	-rm -f $(OBJECT_FILES) *.jou *.log *.pb bsg_rom_main.v main.riscv *.wdb main.bin main.hex
 	-rm -rf xsim.dir
+	#rm -rf $(SOFTFLOAT_ARC_LIB)
+	#cd $(SOFTFLOAT_BUILD_DIR) && $(MAKE) clean
 
 main.o: Makefile
 
