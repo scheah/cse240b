@@ -182,6 +182,11 @@ int get_max_output_buf_size(layer_t* l, int max_size) {
 		}
 	}
 
+	cur_size = l->totalsize - l->start_offset[bsg_num_tiles-1];
+	if (max_size < cur_size) {
+		max_size = cur_size;
+	}
+
 	return max_size;
 }
 #endif
