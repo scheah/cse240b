@@ -57,7 +57,7 @@ void bsg_print_time() {
 }
 
 void bsg_remote_ptr_io_store(int x, int addr, int data) {
-	printf("IO %d %08x %x\n", x, addr, data);
+	printf("IO %d %08x %08x\n", x, addr, data);
 }
 
 void barrier() {
