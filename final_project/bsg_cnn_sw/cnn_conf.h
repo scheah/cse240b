@@ -22,14 +22,47 @@ typedef float32_t float_tt;
 typedef int float_tt;
 #endif
 
-// Testing layer size - maximum size
-//#define LAYER_IO_SIZE_DEF 4704
-//#define LX_W_SIZE_DEF 40960
-
 // CNN Layer definition
 #define LAYER_INPUT_SIZE 4704
 
 // Buffer sizes
+// : for 2x2 tiles
+#if (bsg_tiles_X == 2) && (bsg_tiles_Y == 2)
+	#define LAYER_OUTPUT_SIZE 1176
+
+	#define L1_BIN_SIZE 2
+	#define L1_W_SIZE 50
+	#define L1_B_SIZE 1176
+
+	#define L3_BIN_SIZE 24
+	#define L3_W_SIZE 600
+	#define L3_B_SIZE 400
+
+	#define L5_BIN_SIZE 400
+	#define L5_W_SIZE 10000
+	#define L5_B_SIZE 25
+
+#endif
+
+// : for 3x3 tiles
+#if (bsg_tiles_X == 3) && (bsg_tiles_Y == 3)
+	#define LAYER_OUTPUT_SIZE 523
+
+	#define L1_BIN_SIZE 2
+	#define L1_W_SIZE 50
+	#define L1_B_SIZE 523
+
+	#define L3_BIN_SIZE 18
+	#define L3_W_SIZE 450
+	#define L3_B_SIZE 178
+
+	#define L5_BIN_SIZE 192
+	#define L5_W_SIZE 4800
+	#define L5_B_SIZE 12
+
+#endif
+
+
 // : for 4x4 tiles
 #if (bsg_tiles_X == 4) && (bsg_tiles_Y == 4)
 	#define LAYER_OUTPUT_SIZE 294
@@ -46,5 +79,26 @@ typedef int float_tt;
 	#define L5_W_SIZE 2800
 	#define L5_B_SIZE 7
 #endif
+
+
+// Testing layer size - maximum size
+// Use them in x86 to get the minimum size to run on bsg
+//#define LAYER_IO_SIZE_DEF 4704
+//#define LX_W_SIZE_DEF 40960
+//
+//#define LAYER_OUTPUT_SIZE LAYER_IO_SIZE_DEF
+//
+//#define L1_BIN_SIZE LX_W_SIZE_DEF
+//#define L1_W_SIZE LX_W_SIZE_DEF
+//#define L1_B_SIZE LX_W_SIZE_DEF
+//
+//#define L3_BIN_SIZE LX_W_SIZE_DEF
+//#define L3_W_SIZE LX_W_SIZE_DEF
+//#define L3_B_SIZE LX_W_SIZE_DEF
+//
+//#define L5_BIN_SIZE LX_W_SIZE_DEF
+//#define L5_W_SIZE LX_W_SIZE_DEF
+//#define L5_B_SIZE LX_W_SIZE_DEF
+
 
 #endif
