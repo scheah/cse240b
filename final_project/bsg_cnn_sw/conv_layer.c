@@ -1,6 +1,7 @@
 // CSE240B: Convolution Neural Network - Digital number recognition (MNIST dataset)
 // Convolution layer implementation
 #include "cnn_conf.h"
+#include "softfloat_wrapper.h"
 
 #ifdef BSG_X86_SIMUL
 #include "bsg_util_x86_simul.h"
@@ -189,7 +190,7 @@ void forward_conv(
 	for (outputs_idx = start_out; outputs_idx < end_out; ++outputs_idx) {
 		local_outputs_idx = outputs_idx - start_out;
 		get_cnn_neuron(l, outputs_idx, &out, &h_, &w_);
-		output_[local_outputs_idx] = 0;
+		SF_ASSIGN(output_[local_outputs_idx], 0);
 
 		for (in = 0; in < l->in_depth_; ++in) {
 			idx = (in * l->out_depth_ * l->kernel_size_ * l->kernel_size_ + out * l->kernel_size_ * l->kernel_size_);
@@ -206,9 +207,11 @@ void forward_conv(
 			for (y = 0; y < l->kernel_size_; y++) {
 				for (x = 0; x < l->kernel_size_; x++) {
 					i = x + y * l->kernel_size_;
-					output_[local_outputs_idx] +=
-						input_[in * (l->in_width_ * l->in_height_) + (h_ + y) * l->in_width_ + x + w_]
-						* W_[W_local_bin_[in_bin_idx] + conv_size - i - 1];
+		
+					output_[local_outputs_idx] =
+						SF_ADD(output_[local_outputs_idx],
+								SF_MUL(input_[in * (l->in_width_ * l->in_height_) + (h_ + y) * l->in_width_ + x + w_], W_[W_local_bin_[in_bin_idx] + conv_size - i - 1])
+							  );
 
 					// Debug: input & weight index check
 					//if (outputs_idx == 360) {
@@ -230,13 +233,16 @@ void forward_conv(
 		//printf("VVV\t%d\t%f\t%f\n", outputs_idx, output_[local_outputs_idx], sigmod(output_[local_outputs_idx] + b_[b_idx]));
 
 		// Compute sigmod and save to input buffer to be forwarded
-		output_[local_outputs_idx] = sigmod(output_[local_outputs_idx] + b_[b_idx]);
+		output_[local_outputs_idx] = sigmod(SF_ADD(output_[local_outputs_idx], b_[b_idx]));
 		++b_idx;
 	}
 
+	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 2);
+
 	barrier(tile_x, tile_y);
 
-	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 2);
+	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 3);
+
 
 	// Copy the local output to the input
 	// and propogate the local output values
@@ -264,13 +270,13 @@ void forward_conv(
 			s_next, s_prev, 
 			input_, input_prev_);
 
-	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 3);
+	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 4);
 
 	// Debug: Result check
-	//if (l->layer_idx == 4 && tile_x == 0 && tile_y == 0) {
-	//	for (i = 0; i < l->totalsize; ++i) {
-	//		bsg_remote_ptr_io_store(0, 0x4444, input_[i]);
-	//	}
-	//}
+	if ((l->layer_idx == 0 || l->layer_idx == 4) && tile_x == 0 && tile_y == 0) {
+		for (i = 0; i < l->totalsize; ++i) {
+			bsg_remote_ptr_io_store(0, 0x4444, SF_HEX_VAL(input_[i]));
+		}
+	}
 }
 

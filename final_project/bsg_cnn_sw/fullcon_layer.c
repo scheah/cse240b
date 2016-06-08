@@ -2,6 +2,7 @@
 // Fully connected layer implementation
 
 #include "cnn_conf.h"
+#include "softfloat_wrapper.h"
 
 #ifdef BSG_X86_SIMUL
 #include "bsg_util_x86_simul.h"
@@ -61,13 +62,14 @@ void forward_fullcon(
 	// Compute full connected neurons
 	float_tt dot_product;
 	for (out = 0; out < l->out_depth_; ++out) {
-		dot_product = 0;
+		SF_ASSIGN(dot_product, 0);
 		for (in = 0; in < l->in_depth_; ++in) {
 			idx = out * l->in_depth_ + in;
-			dot_product += input_[in] * bsg_volatile_access_float(W_[idx]);
+			dot_product = SF_ADD(dot_product,
+					SF_MUL(input_[in], bsg_volatile_access_float(W_[idx])));
 		}
 		output_[out] = sigmod(
-				dot_product + bsg_volatile_access_float(b_[out])
+				SF_ADD(dot_product, bsg_volatile_access_float(b_[out]))
 				);
 	}
 

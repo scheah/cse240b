@@ -23,13 +23,19 @@ void read_weight_file() {
 
 	// Read Magic & size
 	fread(buf, 1, strlen(MAGIC), fp);
+#ifndef DISABLE_VERBOSE
 	printf("MAGIC: %s == %s\n", buf, MAGIC);
+#endif
 
 	int layer_size, learning_count;
 	fread(&layer_size, sizeof(int), 1, fp);
+#ifndef DISABLE_VERBOSE
 	printf("Loaded layers: %d\n", layer_size);
+#endif
 	fread(&learning_count, sizeof(int), 1, fp);
+#ifndef DISABLE_VERBOSE
 	printf("Learning count: %d\n", learning_count);
+#endif
 
 	// Load each layer
 	int i, j;
@@ -49,7 +55,9 @@ void read_weight_file() {
 	}
 
 	getc(fp);
+#ifndef DISABLE_VERBOSE
 	printf("Loading finished. %d\n", feof(fp));
+#endif
 	close(fp);
 }
 

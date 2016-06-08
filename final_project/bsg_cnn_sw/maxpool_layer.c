@@ -1,6 +1,7 @@
 // CSE240B: Convolution Neural Network - Digital number recognition (MNIST dataset)
 // Max pooling layer implementation
 #include "cnn_conf.h"
+#include "softfloat_wrapper.h"
 
 #ifdef BSG_X86_SIMUL
 #include "bsg_util_x86_simul.h"
@@ -70,13 +71,13 @@ void forward_maxpool(
 		get_mp_neuron(l, outputs_idx, &out, &h_, &w_);
 
 		// Take max
-		output_[local_outputs_idx] = 0;
+		SF_ASSIGN(output_[local_outputs_idx], 0);
 		for (x = 0; x < 2; x++){
 			for (y = 0; y < 2; y++){
 				idx = (out * l->in_width_ * l->in_height_) +
 					((h_ + y) * l->in_width_) + (w_ + x);
 
-				if (output_[local_outputs_idx] < input_[idx]){
+				if (SF_LT(output_[local_outputs_idx], input_[idx])) {
 					output_[local_outputs_idx] = input_[idx];
 				}
 			}

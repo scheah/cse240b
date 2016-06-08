@@ -2,6 +2,7 @@
 // Output layer implementation
 
 #include "cnn_conf.h"
+#include "softfloat_wrapper.h"
 
 #ifdef BSG_X86_SIMUL
 #include "bsg_util_x86_simul.h"
@@ -43,11 +44,12 @@ int forward_output(
 
 	int in;
 	int max_idx = -1;
-	float_tt max_value = 0;
+	float_tt max_value;
+	SF_ASSIGN(max_value, 0);
 	for (in = 0; in < l->in_depth_; ++in) {
-		//bsg_remote_ptr_io_store(0, 0x4444, input_[in]);
+		bsg_remote_ptr_io_store(0, 0x4444, SF_HEX_VAL(input_[in]));
 
-		if (max_idx == -1 || max_value < input_[in]) {
+		if (max_idx == -1 || SF_LT(input_[in], max_value)) {
 			max_idx = in;
 			max_value = input_[in];
 		}

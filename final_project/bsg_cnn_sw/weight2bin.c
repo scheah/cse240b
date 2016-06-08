@@ -56,8 +56,9 @@ void write_to_file(float_tt v) {
 }
 #else // GEN_BIN
 FILE* fp = NULL;
-void write_to_file(float_tt x) {
+void write_to_file(float_tt t) {
 	// Change endian
+	unsigned int x = *((unsigned int*)(&t));
 	x = ( x >> 24 ) | (( x << 8) & 0x00ff0000 )| ((x >> 8) & 0x0000ff00) | ( x << 24)  ; 
 	
 	fwrite(&x, sizeof(float_tt), 1, fp);
@@ -77,7 +78,7 @@ void gen_hex_b(int layer_idx, int b_size) {
 	int b_idx;
 	float_tt v;
 	for (b_idx = 0; b_idx < b_size; ++b_idx) {
-		load_w(layer_idx, b_idx, &v);
+		load_b(layer_idx, b_idx, &v);
 		write_to_file(v);
 	}
 }

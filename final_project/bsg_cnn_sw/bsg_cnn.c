@@ -1,5 +1,6 @@
 // CSE240B: Convolution Neural Network - Digital number recognition (MNIST dataset)
 #include "cnn_conf.h"
+#include "softfloat_wrapper.h"
 
 #ifdef BSG_X86_SIMUL
 #include "bsg_util_x86_simul.h"
@@ -9,6 +10,8 @@
 #include "bsg_set_tile_x_y.h"
 #include "bsg_util_non_simul.h"
 #endif
+
+#include "bsg_manycore_float_ext.h"
 
 #include "conv_layer.h"
 #include "maxpool_layer.h"
@@ -142,7 +145,7 @@ inline volatile float_tt* remote_test_buffer(sweep_path* s) {
 	if (s->dest_tile_x == -1)
 		return (float_tt*)0;
 
-	return bsg_remote_ptr(s->dest_tile_x, s->dest_tile_y, sweep_test_buf);
+	return bsg_remote_ptr_float(s->dest_tile_x, s->dest_tile_y, sweep_test_buf);
 }
 
 void sweep_test (int tile_x, int tile_y) {
@@ -351,7 +354,7 @@ inline volatile float_tt* remote_input_buffer(sweep_path* s) {
 	if (s->dest_tile_x == -1)
 		return (float_tt*)0;
 
-	return bsg_remote_ptr(s->dest_tile_x, s->dest_tile_y, input_buf);
+	return bsg_remote_ptr_float(s->dest_tile_x, s->dest_tile_y, input_buf);
 }
 
 int forward_layers(int tile_x, int tile_y) {

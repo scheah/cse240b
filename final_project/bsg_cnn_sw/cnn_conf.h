@@ -5,14 +5,19 @@
 
 // Execution mode parameters related to debug
 //#define BSG_X86_SIMUL // Run on x86
-#define TEST_WITH_INT // Test using integer instead of float
+//#define TEST_WITH_INT // Test using integer instead of float
 //#define MEMORY_BUF_TEST // Test memory buffers at beginning (when run on bsg)
 //#define SWEEP_PROPAGATION_TEST // Test sweep prop utility at beginning (when run on bsg)
 
 
 // type used in computation
 #ifndef TEST_WITH_INT
+#ifdef BSG_X86_SIMUL
 typedef float float_tt;
+#else
+#include "softfloat.h"
+typedef float32_t float_tt;
+#endif
 #else
 typedef int float_tt;
 #endif
