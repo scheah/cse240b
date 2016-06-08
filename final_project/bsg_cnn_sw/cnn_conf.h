@@ -27,6 +27,23 @@ typedef int float_tt;
 
 // Buffer sizes
 // : for 2x2 tiles
+#if (bsg_tiles_X == 1) && (bsg_tiles_Y == 1)
+	#define LAYER_OUTPUT_SIZE 4704
+
+	#define L1_BIN_SIZE 6
+	#define L1_W_SIZE 150
+	#define L1_B_SIZE 4704
+
+	#define L3_BIN_SIZE 96
+	#define L3_W_SIZE 2400
+	#define L3_B_SIZE 1600
+
+	#define L5_BIN_SIZE 1600
+	#define L5_W_SIZE 40000
+	#define L5_B_SIZE 100
+#endif
+
+// : for 2x2 tiles
 #if (bsg_tiles_X == 2) && (bsg_tiles_Y == 2)
 	#define LAYER_OUTPUT_SIZE 1176
 
@@ -41,7 +58,6 @@ typedef int float_tt;
 	#define L5_BIN_SIZE 400
 	#define L5_W_SIZE 10000
 	#define L5_B_SIZE 25
-
 #endif
 
 // : for 3x3 tiles
@@ -79,6 +95,45 @@ typedef int float_tt;
 	#define L5_W_SIZE 2800
 	#define L5_B_SIZE 7
 #endif
+
+
+// : for 6x6 tiles
+#if (bsg_tiles_X == 6) && (bsg_tiles_Y == 6)
+	#define LAYER_OUTPUT_SIZE 131
+
+	#define L1_BIN_SIZE 2
+	#define L1_W_SIZE 50
+	#define L1_B_SIZE 131
+
+	#define L3_BIN_SIZE 12
+	#define L3_W_SIZE 300
+	#define L3_B_SIZE 45
+
+	#define L5_BIN_SIZE 48
+	#define L5_W_SIZE 1200
+	#define L5_B_SIZE 3
+#endif
+
+
+
+// : for 8x8 tiles
+#if (bsg_tiles_X == 8) && (bsg_tiles_Y == 8)
+	#define LAYER_OUTPUT_SIZE 74
+
+	#define L1_BIN_SIZE 2
+	#define L1_W_SIZE 50
+	#define L1_B_SIZE 74
+
+	#define L3_BIN_SIZE 6
+	#define L3_W_SIZE 150
+	#define L3_B_SIZE 25
+
+	#define L5_BIN_SIZE 32
+	#define L5_W_SIZE 800
+	#define L5_B_SIZE 2
+#endif
+
+
 
 
 // Testing layer size - maximum size
