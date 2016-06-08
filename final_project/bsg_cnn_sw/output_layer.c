@@ -47,6 +47,7 @@ int forward_output(
 	float_tt max_value;
 	SF_ASSIGN(max_value, 0);
 	for (in = 0; in < l->in_depth_; ++in) {
+		//printf("%f\n", input_[in]);
 		bsg_remote_ptr_io_store(0, 0x4444, SF_HEX_VAL(input_[in]));
 
 		if (max_idx == -1 || SF_LT(max_value, input_[in])) {

@@ -273,8 +273,9 @@ void forward_conv(
 	if (tile_id == 0) bsg_remote_ptr_io_store(0, 0x4004, 4);
 
 	// Debug: Result check
-	if ((l->layer_idx == 0 || l->layer_idx == 4) && tile_x == 0 && tile_y == 0) {
+	if (l->layer_idx == 4 && tile_x == 0 && tile_y == 0) {
 		for (i = 0; i < l->totalsize; ++i) {
+			//printf("%f\n", input_[i]);
 			bsg_remote_ptr_io_store(0, 0x4444, SF_HEX_VAL(input_[i]));
 		}
 	}
