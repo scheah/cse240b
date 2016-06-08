@@ -4,7 +4,7 @@
 #define _CNN_CONF_H_
 
 // Execution mode parameters related to debug
-#define BSG_X86_SIMUL // Run on x86
+//#define BSG_X86_SIMUL // Run on x86
 //#define TEST_WITH_INT // Test using integer instead of float
 //#define MEMORY_BUF_TEST // Test memory buffers at beginning (when run on bsg)
 //#define SWEEP_PROPAGATION_TEST // Test sweep prop utility at beginning (when run on bsg)
