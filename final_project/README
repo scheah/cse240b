@@ -61,7 +61,7 @@ the program shows two values for two addresses at the end of the log,
 "00002000": The recognized digit value computed on CNN
 
 Thus, they should be same if the CNN correctly recognizes.
-+) In the integer test which uses "test_input_int.c" and randomly filled weights,
++) In the integer test which uses "test_input_int.c" and artificially generated integer weights (i.e., make genweight),
 the CNN should recognize the value by "9" through its computation.
 
 - How to change the input files (images):
