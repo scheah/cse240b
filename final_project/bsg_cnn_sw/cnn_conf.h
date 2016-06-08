@@ -26,7 +26,7 @@ typedef int float_tt;
 #define LAYER_INPUT_SIZE 4704
 
 // Buffer sizes
-// : for 2x2 tiles
+// : for 1x1 tiles
 #if (bsg_tiles_X == 1) && (bsg_tiles_Y == 1)
 	#define LAYER_OUTPUT_SIZE 4704
 
