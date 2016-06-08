@@ -17,6 +17,7 @@
 typedef volatile int   *bsg_remote_int_ptr;
 
 #define bsg_remote_ptr(x, y, v) v[x][y]
+#define bsg_remote_ptr_float(x, y, v) v[x][y]
 
 // control
 #define bsg_wait_while(cond) do {} while ((cond))

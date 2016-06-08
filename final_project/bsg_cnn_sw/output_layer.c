@@ -49,7 +49,7 @@ int forward_output(
 	for (in = 0; in < l->in_depth_; ++in) {
 		bsg_remote_ptr_io_store(0, 0x4444, SF_HEX_VAL(input_[in]));
 
-		if (max_idx == -1 || SF_LT(input_[in], max_value)) {
+		if (max_idx == -1 || SF_LT(max_value, input_[in])) {
 			max_idx = in;
 			max_value = input_[in];
 		}
