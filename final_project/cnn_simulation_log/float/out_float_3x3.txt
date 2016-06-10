@@ -1,0 +1,676 @@
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc -march=RV32IMA -m32 -static -std=gnu99 -ffast-math -fno-common -fno-builtin-printf -O4 -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 -DSOFTFLOAT_FAST_DIV64TO32 -I. -I./berkeley-softfloat-3/source//RISCV -I./berkeley-softfloat-3/source//include -I./bsg_lib_ext -I/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/ -I/home/student/cse240b/hw6/bsg_manycore/software/bsg_manycore_lib -Dbsg_tiles_X=3 -Dbsg_tiles_Y=3 -DPREALLOCATE=0 -DHOST_DEBUG=0 -c  /home/student/cse240b/hw6/bsg_manycore/software/bsg_manycore_lib/bsg_set_tile_x_y.c -o bsg_set_tile_x_y.o
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc -march=RV32IMA -m32 -static -std=gnu99 -ffast-math -fno-common -fno-builtin-printf -O4 -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 -DSOFTFLOAT_FAST_DIV64TO32 -I. -I./berkeley-softfloat-3/source//RISCV -I./berkeley-softfloat-3/source//include -I./bsg_lib_ext -I/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/ -I/home/student/cse240b/hw6/bsg_manycore/software/bsg_manycore_lib -Dbsg_tiles_X=3 -Dbsg_tiles_Y=3 -DPREALLOCATE=0 -DHOST_DEBUG=0 -c  bsg_cnn.c -o bsg_cnn.o
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc -march=RV32IMA -m32 -static -std=gnu99 -ffast-math -fno-common -fno-builtin-printf -O4 -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 -DSOFTFLOAT_FAST_DIV64TO32 -I. -I./berkeley-softfloat-3/source//RISCV -I./berkeley-softfloat-3/source//include -I./bsg_lib_ext -I/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/ -I/home/student/cse240b/hw6/bsg_manycore/software/bsg_manycore_lib -Dbsg_tiles_X=3 -Dbsg_tiles_Y=3 -DPREALLOCATE=0 -DHOST_DEBUG=0 -c  sweep_propagate.c -o sweep_propagate.o
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc -march=RV32IMA -m32 -static -std=gnu99 -ffast-math -fno-common -fno-builtin-printf -O4 -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 -DSOFTFLOAT_FAST_DIV64TO32 -I. -I./berkeley-softfloat-3/source//RISCV -I./berkeley-softfloat-3/source//include -I./bsg_lib_ext -I/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/ -I/home/student/cse240b/hw6/bsg_manycore/software/bsg_manycore_lib -Dbsg_tiles_X=3 -Dbsg_tiles_Y=3 -DPREALLOCATE=0 -DHOST_DEBUG=0 -c  layer_common.c -o layer_common.o
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc -march=RV32IMA -m32 -static -std=gnu99 -ffast-math -fno-common -fno-builtin-printf -O4 -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 -DSOFTFLOAT_FAST_DIV64TO32 -I. -I./berkeley-softfloat-3/source//RISCV -I./berkeley-softfloat-3/source//include -I./bsg_lib_ext -I/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/ -I/home/student/cse240b/hw6/bsg_manycore/software/bsg_manycore_lib -Dbsg_tiles_X=3 -Dbsg_tiles_Y=3 -DPREALLOCATE=0 -DHOST_DEBUG=0 -c  conv_layer.c -o conv_layer.o
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc -march=RV32IMA -m32 -static -std=gnu99 -ffast-math -fno-common -fno-builtin-printf -O4 -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 -DSOFTFLOAT_FAST_DIV64TO32 -I. -I./berkeley-softfloat-3/source//RISCV -I./berkeley-softfloat-3/source//include -I./bsg_lib_ext -I/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/ -I/home/student/cse240b/hw6/bsg_manycore/software/bsg_manycore_lib -Dbsg_tiles_X=3 -Dbsg_tiles_Y=3 -DPREALLOCATE=0 -DHOST_DEBUG=0 -c  maxpool_layer.c -o maxpool_layer.o
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc -march=RV32IMA -m32 -static -std=gnu99 -ffast-math -fno-common -fno-builtin-printf -O4 -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 -DSOFTFLOAT_FAST_DIV64TO32 -I. -I./berkeley-softfloat-3/source//RISCV -I./berkeley-softfloat-3/source//include -I./bsg_lib_ext -I/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/ -I/home/student/cse240b/hw6/bsg_manycore/software/bsg_manycore_lib -Dbsg_tiles_X=3 -Dbsg_tiles_Y=3 -DPREALLOCATE=0 -DHOST_DEBUG=0 -c  fullcon_layer.c -o fullcon_layer.o
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc -march=RV32IMA -m32 -static -std=gnu99 -ffast-math -fno-common -fno-builtin-printf -O4 -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 -DSOFTFLOAT_FAST_DIV64TO32 -I. -I./berkeley-softfloat-3/source//RISCV -I./berkeley-softfloat-3/source//include -I./bsg_lib_ext -I/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/ -I/home/student/cse240b/hw6/bsg_manycore/software/bsg_manycore_lib -Dbsg_tiles_X=3 -Dbsg_tiles_Y=3 -DPREALLOCATE=0 -DHOST_DEBUG=0 -c  output_layer.c -o output_layer.o
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc -march=RV32IMA -m32 -static -std=gnu99 -ffast-math -fno-common -fno-builtin-printf -O4 -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 -DSOFTFLOAT_FAST_DIV64TO32 -I. -I./berkeley-softfloat-3/source//RISCV -I./berkeley-softfloat-3/source//include -I./bsg_lib_ext -I/home/student/cse240b/hw6/bsg_manycore/software/spmd/common/ -I/home/student/cse240b/hw6/bsg_manycore/software/bsg_manycore_lib -Dbsg_tiles_X=3 -Dbsg_tiles_Y=3 -DPREALLOCATE=0 -DHOST_DEBUG=0 -c  bsg_lib_ext/barrier.c -o bsg_lib_ext/barrier.o
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/riscv64-unknown-elf-gcc -T /home/student/cse240b/hw6/bsg_manycore/software/spmd/common/test.ld bsg_set_tile_x_y.o bsg_cnn.o sweep_propagate.o layer_common.o conv_layer.o maxpool_layer.o fullcon_layer.o output_layer.o ./bsg_lib_ext/barrier.o softfloat.a -o main.riscv -m32 -march=RV32IMA -nostdlib -nostartfiles -ffast-math -lc -lgcc -L /home/student/cse240b/hw6/bsg_manycore/software/spmd/common 
+/home/student/cse240b/hw6/bsg_manycore/../../riscv-tools/riscv-install/bin/elf2hex 32 4096 main.riscv > main.hex
+python /home/student/cse240b/hw6/bsg_manycore/software/py/hex2binascii.py main.hex 32 > main.bin
+python /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_mem/bsg_ascii_to_rom.py main.bin bsg_rom_main zero > bsg_rom_main.v
+xvlog -sv /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_defines.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_noc/bsg_noc_pkg.v /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_ctrl_constants.vh /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/rv32_opcodes.vh /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_alu_ops.vh /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_md_constants.vh /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_hasti_constants.vh /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_csr_addr_map.vh -i /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/   -i /home/student/cse240b/hw6/bsg_manycore/v/ /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_transpose.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_crossbar_o_by_i.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_cycle_counter.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_round_robin_arb.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_arb_fixed.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_priority_encode.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_priority_encode_one_hot_out.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_mux_one_hot.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_encode_one_hot.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_scan.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_misc/bsg_circular_ptr.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_mem/bsg_mem_1r1w.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_mem/bsg_mem_banked_crossbar.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_mem/bsg_mem_1rw_sync_mask_write_byte.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_mem/bsg_mem_1rw_sync.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_dataflow/bsg_fifo_1r1w_small.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_dataflow/bsg_two_fifo.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_test/bsg_nonsynth_clock_gen.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_test/bsg_nonsynth_reset_gen.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_noc/bsg_mesh_router.v /home/student/cse240b/hw6/bsg_manycore/../bsg_ip_cores/bsg_noc/bsg_mesh_router_buffered.v /home/student/cse240b/hw6/bsg_manycore/v/vscale/vscale_pipeline.v /home/student/cse240b/hw6/bsg_manycore/v/vscale/vscale_ctrl.v /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_regfile.v /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_src_a_mux.v /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_src_b_mux.v /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_imm_gen.v /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_alu.v /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_mul_div.v /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_csr_file.v /home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_PC_mux.v /home/student/cse240b/hw6/bsg_manycore/v/bsg_vscale_pkg.v /home/student/cse240b/hw6/bsg_manycore/v/bsg_vscale_core.v /home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore_proc.v /home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore_tile.v /home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v /home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore_pkt_encode.v /home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore_pkt_decode.v /home/student/cse240b/hw6/bsg_manycore/testbenches/common/v/bsg_manycore_spmd_loader.v /home/student/cse240b/hw6/bsg_manycore/testbenches/common/v/bsg_nonsynth_manycore_monitor.v bsg_rom_main.v /home/student/cse240b/hw6/bsg_manycore/testbenches/basic/test_bsg_manycore.v -d SPMD=main -d bsg_tiles_X=3 -d bsg_tiles_Y=3 -d CNN_WEIGHT_ROM=\"/home/student/cse240b/hw6/bsg_manycore/software/spmd/bsg_cnn_sw/weight_rom.dat\" # CNN: Add weight debug macro to enable
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_defines.v" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_noc/bsg_noc_pkg.v" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_ctrl_constants.vh" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/rv32_opcodes.vh" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_alu_ops.vh" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_md_constants.vh" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_hasti_constants.vh" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_csr_addr_map.vh" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_transpose.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_transpose
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_crossbar_o_by_i.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_crossbar_o_by_i
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_cycle_counter.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_cycle_counter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_round_robin_arb.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_round_robin_arb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_arb_fixed.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_arb_fixed
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_priority_encode.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_priority_encode
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_priority_encode_one_hot_out.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_priority_encode_one_hot_out
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_mux_one_hot.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_mux_one_hot
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_encode_one_hot.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_encode_one_hot
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_scan.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_scan
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_misc/bsg_circular_ptr.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_circular_ptr
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_mem/bsg_mem_1r1w.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_mem_1r1w
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_mem/bsg_mem_banked_crossbar.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_crossbar_control_o_by_i
+INFO: [VRFC 10-311] analyzing module bsg_mem_banked_crossbar
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_mem/bsg_mem_1rw_sync_mask_write_byte.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_mem_1rw_sync_mask_write_byte
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_mem/bsg_mem_1rw_sync.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_mem_1rw_sync
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_dataflow/bsg_fifo_1r1w_small.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_fifo_1r1w_small
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_dataflow/bsg_two_fifo.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_two_fifo
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_test/bsg_nonsynth_clock_gen.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_nonsynth_clock_gen
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_test/bsg_nonsynth_reset_gen.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_nonsynth_reset_gen
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_noc/bsg_mesh_router.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_mesh_router_dor_decoder
+INFO: [VRFC 10-311] analyzing module bsg_mesh_router
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_ip_cores/bsg_noc/bsg_mesh_router_buffered.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_mesh_router_buffered
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/v/vscale/vscale_pipeline.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_pipeline
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/v/vscale/vscale_ctrl.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_ctrl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_regfile.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_regfile
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_src_a_mux.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_src_a_mux
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_src_b_mux.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_src_b_mux
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_imm_gen.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_imm_gen
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_alu.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_alu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_mul_div.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_mul_div
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_csr_file.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_csr_file
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/imports/vscale/src/main/verilog/vscale_PC_mux.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_PC_mux
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/v/bsg_vscale_pkg.v" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/v/bsg_vscale_core.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_vscale_core
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore_proc.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_manycore_proc
+INFO: [VRFC 10-2458] undeclared symbol core_mem_reserve_1, assumed default net type wire [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore_proc.v:202]
+INFO: [VRFC 10-311] analyzing module bsg_manycore_magic_load
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore_tile.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_manycore_tile
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_manycore
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore_pkt_encode.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_manycore_pkt_encode
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore_pkt_decode.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_manycore_pkt_decode
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/testbenches/common/v/bsg_manycore_spmd_loader.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_manycore_spmd_loader
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/testbenches/common/v/bsg_nonsynth_manycore_monitor.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_nonsynth_manycore_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/software/spmd/bsg_cnn_sw/bsg_rom_main.v" into library work
+INFO: [VRFC 10-311] analyzing module bsg_rom_main
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/student/cse240b/hw6/bsg_manycore/testbenches/basic/test_bsg_manycore.v" into library work
+INFO: [VRFC 10-311] analyzing module vscale_pipeline_trace
+INFO: [VRFC 10-311] analyzing module bsg_manycore_tile_trace
+INFO: [VRFC 10-311] analyzing module bsg_manycore_proc_trace
+INFO: [VRFC 10-311] analyzing module test_bsg_manycore
+INFO: [VRFC 10-311] analyzing module cnn_nonsynth_weight_loader_like_rom
+INFO: [VRFC 10-311] analyzing module bsg_manycore_cnn_weight_loader
+xelab -debug typical -s top_sim test_bsg_manycore | grep -v Compiling
+Vivado Simulator 2016.1
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: /opt/Xilinx/Vivado/2016.1/bin/unwrapped/lnx64.o/xelab -debug typical -s top_sim test_bsg_manycore 
+Starting static elaboration
+WARNING: [VRFC 10-1783] select index -1 into data_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:128]
+WARNING: [VRFC 10-1783] select index -1 into data_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:134]
+WARNING: [VRFC 10-1783] select index -1 into v_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:142]
+WARNING: [VRFC 10-1783] select index -1 into v_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:148]
+WARNING: [VRFC 10-1783] select index -1 into ready_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:161]
+WARNING: [VRFC 10-1783] select index -1 into ready_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:167]
+WARNING: [VRFC 10-1783] select index 3 into data_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:131]
+WARNING: [VRFC 10-1783] select index 3 into v_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:145]
+WARNING: [VRFC 10-1783] select index 3 into ready_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:164]
+WARNING: [VRFC 10-1783] select index 3 into data_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:125]
+WARNING: [VRFC 10-1783] select index 3 into v_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:139]
+WARNING: [VRFC 10-1783] select index 3 into ready_out is out of bounds [/home/student/cse240b/hw6/bsg_manycore/v/bsg_manycore.v:158]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Built simulation snapshot top_sim
+
+****** Webtalk v2016.1 (64-bit)
+  **** SW Build 1538259 on Fri Apr  8 15:45:23 MDT 2016
+  **** IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source /home/student/cse240b/hw6/bsg_manycore/software/spmd/bsg_cnn_sw/xsim.dir/top_sim/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Jun  9 02:07:10 2016...
+xsim --runall top_sim 
+
+****** xsim v2016.1 (64-bit)
+  **** SW Build 1538259 on Fri Apr  8 15:45:23 MDT 2016
+  **** IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/top_sim/xsim_script.tcl
+# xsim {top_sim} -autoloadwcfg -runall
+Vivado Simulator 2016.1
+Time resolution is 1 ps
+run -all
+test_bsg_manycore.clock_gen with cycle_time_p          20
+Weight loader like ROM using nonsynth File IO
+__________ ___________  _______________________________
+\______   \\_   _____/ /   _____/\_   _____/\__    ___/
+ |       _/ |    __)_  \_____  \  |    __)_   |    |   
+ |    |   \ |        \ /        \ |        \  |    |  1->0 
+ |____|_  //_______  //_______  //_______  /  |____|   
+ ASYNC  \/         \/         \/         \/            
+test_bsg_manycore.UUT.tile_row_gen[0].tile_col_gen[0].tile.proc.core.vscale.ctrl illegal instruction xxxxxxxx
+test_bsg_manycore.UUT.tile_row_gen[0].tile_col_gen[1].tile.proc.core.vscale.ctrl illegal instruction xxxxxxxx
+test_bsg_manycore.UUT.tile_row_gen[0].tile_col_gen[2].tile.proc.core.vscale.ctrl illegal instruction xxxxxxxx
+test_bsg_manycore.UUT.tile_row_gen[1].tile_col_gen[0].tile.proc.core.vscale.ctrl illegal instruction xxxxxxxx
+test_bsg_manycore.UUT.tile_row_gen[1].tile_col_gen[1].tile.proc.core.vscale.ctrl illegal instruction xxxxxxxx
+test_bsg_manycore.UUT.tile_row_gen[1].tile_col_gen[2].tile.proc.core.vscale.ctrl illegal instruction xxxxxxxx
+test_bsg_manycore.UUT.tile_row_gen[2].tile_col_gen[0].tile.proc.core.vscale.ctrl illegal instruction xxxxxxxx
+test_bsg_manycore.UUT.tile_row_gen[2].tile_col_gen[1].tile.proc.core.vscale.ctrl illegal instruction xxxxxxxx
+test_bsg_manycore.UUT.tile_row_gen[2].tile_col_gen[2].tile.proc.core.vscale.ctrl illegal instruction xxxxxxxx
+Loader: Tile                    0, Addr 00000000
+Loader: Tile                    0, Addr 00000000
+Loader: Tile                    0, Addr 00000000
+Loader: Tile                    0, Addr 00000000
+Loader: Tile                    0, Addr 00000000
+Loader: Tile                    0, Addr 00000000
+Loader: Tile                    0, Addr 00000000
+Loader: Tile                    0, Addr 00000000
+Loader: Tile                    0, Addr 00000000
+Loader: Tile                    0, Addr 00000000
+__________ ___________  _______________________________
+\______   \\_   _____/ /   _____/\_   _____/\__    ___/
+ |       _/ |    __)_  \_____  \  |    __)_   |    |   
+ |    |   \ |        \ /        \ |        \  |    |  1->0 
+ |____|_  //_______  //_______  //_______  /  |____|   
+ ASYNC  \/         \/         \/         \/            
+Loader: Tile                    0, Addr 00001000
+Loader: Tile                    0, Addr 00002000
+Loader: Tile                    0, Addr 00003000
+Loader: Tile                    0, Addr 00004000
+Loader: Tile                    0, Addr 00005000
+Loader: Tile                    0, Addr 00006000
+Loader: Tile                    0, Addr 00007000
+Loader: Tile                    0, Addr 00008000
+Loader: Tile                    0, Addr 00009000
+Loader: Tile                    0, Addr 0000a000
+Loader: Tile                    0, Addr 0000b000
+Loader: Tile                    0, Addr 0000c000
+Loader: Tile                    0, Addr 0000d000
+Loader: Tile                    0, Addr 0000e000
+Loader: Tile                    0, Addr 0000f000
+Loader: Tile                    0, Addr 00010000
+Loader: Tile                    0, Addr 00011000
+Loader: Tile                    0, Addr 00012000
+Loader: Tile                    0, Addr 00013000
+Loader: Tile                    0, Addr 00014000
+Loader: Tile                    0, Addr 00015000
+Loader: Tile                    0, Addr 00016000
+Loader: Tile                    0, Addr 00017000
+Loader: Tile                    0, Addr 00018000
+Loader: Tile                    0, Addr 00019000
+Loader: Tile                    0, Addr 0001a000
+Loader: Tile                    0, Addr 0001b000
+Loader: Tile                    0, Addr 0001c000
+Loader: Tile                    0, Addr 0001d000
+Loader: Tile                    0, Addr 0001e000
+Loader: Tile                    0, Addr 0001f000
+Loader: Tile                    1, Addr 00000000
+Loader: Tile                    1, Addr 00001000
+Loader: Tile                    1, Addr 00002000
+Loader: Tile                    1, Addr 00003000
+Loader: Tile                    1, Addr 00004000
+Loader: Tile                    1, Addr 00005000
+Loader: Tile                    1, Addr 00006000
+Loader: Tile                    1, Addr 00007000
+Loader: Tile                    1, Addr 00008000
+Loader: Tile                    1, Addr 00009000
+Loader: Tile                    1, Addr 0000a000
+Loader: Tile                    1, Addr 0000b000
+Loader: Tile                    1, Addr 0000c000
+Loader: Tile                    1, Addr 0000d000
+Loader: Tile                    1, Addr 0000e000
+Loader: Tile                    1, Addr 0000f000
+Loader: Tile                    1, Addr 00010000
+Loader: Tile                    1, Addr 00011000
+Loader: Tile                    1, Addr 00012000
+Loader: Tile                    1, Addr 00013000
+Loader: Tile                    1, Addr 00014000
+Loader: Tile                    1, Addr 00015000
+Loader: Tile                    1, Addr 00016000
+Loader: Tile                    1, Addr 00017000
+Loader: Tile                    1, Addr 00018000
+Loader: Tile                    1, Addr 00019000
+Loader: Tile                    1, Addr 0001a000
+Loader: Tile                    1, Addr 0001b000
+Loader: Tile                    1, Addr 0001c000
+Loader: Tile                    1, Addr 0001d000
+Loader: Tile                    1, Addr 0001e000
+Loader: Tile                    1, Addr 0001f000
+Loader: Tile                    2, Addr 00000000
+Loader: Tile                    2, Addr 00001000
+Loader: Tile                    2, Addr 00002000
+Loader: Tile                    2, Addr 00003000
+Loader: Tile                    2, Addr 00004000
+Loader: Tile                    2, Addr 00005000
+Loader: Tile                    2, Addr 00006000
+Loader: Tile                    2, Addr 00007000
+Loader: Tile                    2, Addr 00008000
+Loader: Tile                    2, Addr 00009000
+Loader: Tile                    2, Addr 0000a000
+Loader: Tile                    2, Addr 0000b000
+Loader: Tile                    2, Addr 0000c000
+Loader: Tile                    2, Addr 0000d000
+Loader: Tile                    2, Addr 0000e000
+Loader: Tile                    2, Addr 0000f000
+Loader: Tile                    2, Addr 00010000
+Loader: Tile                    2, Addr 00011000
+Loader: Tile                    2, Addr 00012000
+Loader: Tile                    2, Addr 00013000
+Loader: Tile                    2, Addr 00014000
+Loader: Tile                    2, Addr 00015000
+Loader: Tile                    2, Addr 00016000
+Loader: Tile                    2, Addr 00017000
+Loader: Tile                    2, Addr 00018000
+Loader: Tile                    2, Addr 00019000
+Loader: Tile                    2, Addr 0001a000
+Loader: Tile                    2, Addr 0001b000
+Loader: Tile                    2, Addr 0001c000
+Loader: Tile                    2, Addr 0001d000
+Loader: Tile                    2, Addr 0001e000
+Loader: Tile                    2, Addr 0001f000
+Loader: Tile                    3, Addr 00000000
+Loader: Tile                    3, Addr 00001000
+Loader: Tile                    3, Addr 00002000
+Loader: Tile                    3, Addr 00003000
+Loader: Tile                    3, Addr 00004000
+Loader: Tile                    3, Addr 00005000
+Loader: Tile                    3, Addr 00006000
+Loader: Tile                    3, Addr 00007000
+Loader: Tile                    3, Addr 00008000
+Loader: Tile                    3, Addr 00009000
+Loader: Tile                    3, Addr 0000a000
+Loader: Tile                    3, Addr 0000b000
+Loader: Tile                    3, Addr 0000c000
+Loader: Tile                    3, Addr 0000d000
+Loader: Tile                    3, Addr 0000e000
+Loader: Tile                    3, Addr 0000f000
+Loader: Tile                    3, Addr 00010000
+Loader: Tile                    3, Addr 00011000
+Loader: Tile                    3, Addr 00012000
+Loader: Tile                    3, Addr 00013000
+Loader: Tile                    3, Addr 00014000
+Loader: Tile                    3, Addr 00015000
+Loader: Tile                    3, Addr 00016000
+Loader: Tile                    3, Addr 00017000
+Loader: Tile                    3, Addr 00018000
+Loader: Tile                    3, Addr 00019000
+Loader: Tile                    3, Addr 0001a000
+Loader: Tile                    3, Addr 0001b000
+Loader: Tile                    3, Addr 0001c000
+Loader: Tile                    3, Addr 0001d000
+Loader: Tile                    3, Addr 0001e000
+Loader: Tile                    3, Addr 0001f000
+Loader: Tile                    4, Addr 00000000
+Loader: Tile                    4, Addr 00001000
+Loader: Tile                    4, Addr 00002000
+Loader: Tile                    4, Addr 00003000
+Loader: Tile                    4, Addr 00004000
+Loader: Tile                    4, Addr 00005000
+Loader: Tile                    4, Addr 00006000
+Loader: Tile                    4, Addr 00007000
+Loader: Tile                    4, Addr 00008000
+Loader: Tile                    4, Addr 00009000
+Loader: Tile                    4, Addr 0000a000
+Loader: Tile                    4, Addr 0000b000
+Loader: Tile                    4, Addr 0000c000
+Loader: Tile                    4, Addr 0000d000
+Loader: Tile                    4, Addr 0000e000
+Loader: Tile                    4, Addr 0000f000
+Loader: Tile                    4, Addr 00010000
+Loader: Tile                    4, Addr 00011000
+Loader: Tile                    4, Addr 00012000
+Loader: Tile                    4, Addr 00013000
+Loader: Tile                    4, Addr 00014000
+Loader: Tile                    4, Addr 00015000
+Loader: Tile                    4, Addr 00016000
+Loader: Tile                    4, Addr 00017000
+Loader: Tile                    4, Addr 00018000
+Loader: Tile                    4, Addr 00019000
+Loader: Tile                    4, Addr 0001a000
+Loader: Tile                    4, Addr 0001b000
+Loader: Tile                    4, Addr 0001c000
+Loader: Tile                    4, Addr 0001d000
+Loader: Tile                    4, Addr 0001e000
+Loader: Tile                    4, Addr 0001f000
+Loader: Tile                    5, Addr 00000000
+Loader: Tile                    5, Addr 00001000
+Loader: Tile                    5, Addr 00002000
+Loader: Tile                    5, Addr 00003000
+Loader: Tile                    5, Addr 00004000
+Loader: Tile                    5, Addr 00005000
+Loader: Tile                    5, Addr 00006000
+Loader: Tile                    5, Addr 00007000
+Loader: Tile                    5, Addr 00008000
+Loader: Tile                    5, Addr 00009000
+Loader: Tile                    5, Addr 0000a000
+Loader: Tile                    5, Addr 0000b000
+Loader: Tile                    5, Addr 0000c000
+Loader: Tile                    5, Addr 0000d000
+Loader: Tile                    5, Addr 0000e000
+Loader: Tile                    5, Addr 0000f000
+Loader: Tile                    5, Addr 00010000
+Loader: Tile                    5, Addr 00011000
+Loader: Tile                    5, Addr 00012000
+Loader: Tile                    5, Addr 00013000
+Loader: Tile                    5, Addr 00014000
+Loader: Tile                    5, Addr 00015000
+Loader: Tile                    5, Addr 00016000
+Loader: Tile                    5, Addr 00017000
+Loader: Tile                    5, Addr 00018000
+Loader: Tile                    5, Addr 00019000
+Loader: Tile                    5, Addr 0001a000
+Loader: Tile                    5, Addr 0001b000
+Loader: Tile                    5, Addr 0001c000
+Loader: Tile                    5, Addr 0001d000
+Loader: Tile                    5, Addr 0001e000
+Loader: Tile                    5, Addr 0001f000
+Loader: Tile                    6, Addr 00000000
+Loader: Tile                    6, Addr 00001000
+Loader: Tile                    6, Addr 00002000
+Loader: Tile                    6, Addr 00003000
+Loader: Tile                    6, Addr 00004000
+Loader: Tile                    6, Addr 00005000
+Loader: Tile                    6, Addr 00006000
+Loader: Tile                    6, Addr 00007000
+Loader: Tile                    6, Addr 00008000
+Loader: Tile                    6, Addr 00009000
+Loader: Tile                    6, Addr 0000a000
+Loader: Tile                    6, Addr 0000b000
+Loader: Tile                    6, Addr 0000c000
+Loader: Tile                    6, Addr 0000d000
+Loader: Tile                    6, Addr 0000e000
+Loader: Tile                    6, Addr 0000f000
+Loader: Tile                    6, Addr 00010000
+Loader: Tile                    6, Addr 00011000
+Loader: Tile                    6, Addr 00012000
+Loader: Tile                    6, Addr 00013000
+Loader: Tile                    6, Addr 00014000
+Loader: Tile                    6, Addr 00015000
+Loader: Tile                    6, Addr 00016000
+Loader: Tile                    6, Addr 00017000
+Loader: Tile                    6, Addr 00018000
+Loader: Tile                    6, Addr 00019000
+Loader: Tile                    6, Addr 0001a000
+Loader: Tile                    6, Addr 0001b000
+Loader: Tile                    6, Addr 0001c000
+Loader: Tile                    6, Addr 0001d000
+Loader: Tile                    6, Addr 0001e000
+Loader: Tile                    6, Addr 0001f000
+Loader: Tile                    7, Addr 00000000
+Loader: Tile                    7, Addr 00001000
+Loader: Tile                    7, Addr 00002000
+Loader: Tile                    7, Addr 00003000
+Loader: Tile                    7, Addr 00004000
+Loader: Tile                    7, Addr 00005000
+Loader: Tile                    7, Addr 00006000
+Loader: Tile                    7, Addr 00007000
+Loader: Tile                    7, Addr 00008000
+Loader: Tile                    7, Addr 00009000
+Loader: Tile                    7, Addr 0000a000
+Loader: Tile                    7, Addr 0000b000
+Loader: Tile                    7, Addr 0000c000
+Loader: Tile                    7, Addr 0000d000
+Loader: Tile                    7, Addr 0000e000
+Loader: Tile                    7, Addr 0000f000
+Loader: Tile                    7, Addr 00010000
+Loader: Tile                    7, Addr 00011000
+Loader: Tile                    7, Addr 00012000
+Loader: Tile                    7, Addr 00013000
+Loader: Tile                    7, Addr 00014000
+Loader: Tile                    7, Addr 00015000
+Loader: Tile                    7, Addr 00016000
+Loader: Tile                    7, Addr 00017000
+Loader: Tile                    7, Addr 00018000
+Loader: Tile                    7, Addr 00019000
+Loader: Tile                    7, Addr 0001a000
+Loader: Tile                    7, Addr 0001b000
+Loader: Tile                    7, Addr 0001c000
+Loader: Tile                    7, Addr 0001d000
+Loader: Tile                    7, Addr 0001e000
+Loader: Tile                    7, Addr 0001f000
+Loader: Tile                    8, Addr 00000000
+Loader: Tile                    8, Addr 00001000
+Loader: Tile                    8, Addr 00002000
+Loader: Tile                    8, Addr 00003000
+Loader: Tile                    8, Addr 00004000
+Loader: Tile                    8, Addr 00005000
+Loader: Tile                    8, Addr 00006000
+Loader: Tile                    8, Addr 00007000
+Loader: Tile                    8, Addr 00008000
+Loader: Tile                    8, Addr 00009000
+Loader: Tile                    8, Addr 0000a000
+Loader: Tile                    8, Addr 0000b000
+Loader: Tile                    8, Addr 0000c000
+Loader: Tile                    8, Addr 0000d000
+Loader: Tile                    8, Addr 0000e000
+Loader: Tile                    8, Addr 0000f000
+Loader: Tile                    8, Addr 00010000
+Loader: Tile                    8, Addr 00011000
+Loader: Tile                    8, Addr 00012000
+Loader: Tile                    8, Addr 00013000
+Loader: Tile                    8, Addr 00014000
+Loader: Tile                    8, Addr 00015000
+Loader: Tile                    8, Addr 00016000
+Loader: Tile                    8, Addr 00017000
+Loader: Tile                    8, Addr 00018000
+Loader: Tile                    8, Addr 00019000
+Loader: Tile                    8, Addr 0001a000
+Loader: Tile                    8, Addr 0001b000
+Loader: Tile                    8, Addr 0001c000
+Loader: Tile                    8, Addr 0001d000
+Loader: Tile                    8, Addr 0001e000
+Loader: Tile                    8, Addr 0001f000
+Finished loading.
+## freeze_r <= 0
+## freeze_r <= 0
+## freeze_r <= 0
+## freeze_r <= 0
+## freeze_r <= 0
+## freeze_r <= 0
+## freeze_r <= 0
+## freeze_r <= 0
+## freeze_r <= 0
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x00000481b8 (       295352)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x000007c66b (       509547)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x000007c768 (       509800)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x00000bd8fa (       776442)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x00000bd9dd (       776669)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x00001aed6e (      1764718)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x00001aed86 (      1764742)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x00001aed9e (      1764766)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x00001aedac (      1764780)
+Magic Found 980a19ac. load the target value instead (         32 bit)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x00001aee21 (      1764897)
+## received I/O device 00000000, addr 00001444, data 00000000 on cycle 0x00001aee24 (      1764900)
+## received I/O device 00000000, addr 00004004, data 00000001 on cycle 0x00001aee8c (      1765004)
+## received I/O device 00000000, addr 00004004, data 00000002 on cycle 0x00006ade1a (      7003674)
+Magic Found 980a19ac. load the target value instead (         32 bit)
+## received I/O device 00000000, addr 00004004, data 00000003 on cycle 0x00006d2b0a (      7154442)
+## received I/O device 00000000, addr 00004004, data 00000004 on cycle 0x00006e5655 (      7231061)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x00006e566e (      7231086)
+## received I/O device 00000000, addr 00001444, data 00000001 on cycle 0x00006e5670 (      7231088)
+## received I/O device 00000000, addr 00004004, data 00000001 on cycle 0x00006e56ab (      7231147)
+Magic Found 980a19ac. load the target value instead (         32 bit)
+## received I/O device 00000000, addr 00004004, data 00000002 on cycle 0x00006fdd47 (      7331143)
+## received I/O device 00000000, addr 00004004, data 00000003 on cycle 0x0000702c16 (      7351318)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x0000702c2c (      7351340)
+## received I/O device 00000000, addr 00001444, data 00000002 on cycle 0x0000702c2e (      7351342)
+## received I/O device 00000000, addr 00004004, data 00000001 on cycle 0x0000702c94 (      7351444)
+## received I/O device 00000000, addr 00004004, data 00000002 on cycle 0x000141ef0b (     21098251)
+Magic Found 980a19ac. load the target value instead (         32 bit)
+## received I/O device 00000000, addr 00004004, data 00000003 on cycle 0x0001431d1b (     21175579)
+## received I/O device 00000000, addr 00004004, data 00000004 on cycle 0x000143865c (     21202524)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x0001438675 (     21202549)
+## received I/O device 00000000, addr 00001444, data 00000003 on cycle 0x0001438677 (     21202551)
+## received I/O device 00000000, addr 00004004, data 00000001 on cycle 0x00014386b2 (     21202610)
+Magic Found 980a19ac. load the target value instead (         32 bit)
+## received I/O device 00000000, addr 00004004, data 00000002 on cycle 0x0001440d78 (     21237112)
+## received I/O device 00000000, addr 00004004, data 00000003 on cycle 0x0001442bdb (     21244891)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x0001442bf1 (     21244913)
+## received I/O device 00000000, addr 00001444, data 00000004 on cycle 0x0001442bf3 (     21244915)
+## received I/O device 00000000, addr 00004004, data 00000001 on cycle 0x0001442c59 (     21245017)
+## received I/O device 00000000, addr 00004004, data 00000002 on cycle 0x00016b7f53 (     23822163)
+Magic Found 980a19ac. load the target value instead (         32 bit)
+## received I/O device 00000000, addr 00004004, data 00000003 on cycle 0x00016b7f95 (     23822229)
+## received I/O device 00000000, addr 00004004, data 00000004 on cycle 0x00016b8b52 (     23825234)
+## received I/O device 00000000, addr 00004444, data 3f7f7448 on cycle 0x00016b8b64 (     23825252)
+## received I/O device 00000000, addr 00004444, data 3a51285b on cycle 0x00016b8b6c (     23825260)
+## received I/O device 00000000, addr 00004444, data 3aa8c98a on cycle 0x00016b8b74 (     23825268)
+## received I/O device 00000000, addr 00004444, data 38dac244 on cycle 0x00016b8b7c (     23825276)
+## received I/O device 00000000, addr 00004444, data 3b6e184f on cycle 0x00016b8b84 (     23825284)
+## received I/O device 00000000, addr 00004444, data 3966c771 on cycle 0x00016b8b8c (     23825292)
+## received I/O device 00000000, addr 00004444, data 38c224ce on cycle 0x00016b8b94 (     23825300)
+## received I/O device 00000000, addr 00004444, data 3a69e423 on cycle 0x00016b8b9c (     23825308)
+## received I/O device 00000000, addr 00004444, data 3f7fae5c on cycle 0x00016b8ba4 (     23825316)
+## received I/O device 00000000, addr 00004444, data 3ae4f43b on cycle 0x00016b8bac (     23825324)
+## received I/O device 00000000, addr 00004444, data 399fdf3e on cycle 0x00016b8bb4 (     23825332)
+## received I/O device 00000000, addr 00004444, data 3f7f5cfe on cycle 0x00016b8bbc (     23825340)
+## received I/O device 00000000, addr 00004444, data 3b15c234 on cycle 0x00016b8bc4 (     23825348)
+## received I/O device 00000000, addr 00004444, data 3a633cd3 on cycle 0x00016b8bcc (     23825356)
+## received I/O device 00000000, addr 00004444, data 3aa53a82 on cycle 0x00016b8bd4 (     23825364)
+## received I/O device 00000000, addr 00004444, data 39a9c79e on cycle 0x00016b8bdc (     23825372)
+## received I/O device 00000000, addr 00004444, data 399beefb on cycle 0x00016b8be4 (     23825380)
+## received I/O device 00000000, addr 00004444, data 3b7162ae on cycle 0x00016b8bec (     23825388)
+## received I/O device 00000000, addr 00004444, data 3f7ffd0e on cycle 0x00016b8bf4 (     23825396)
+## received I/O device 00000000, addr 00004444, data 3f7b6fdf on cycle 0x00016b8bfc (     23825404)
+## received I/O device 00000000, addr 00004444, data 3f7fe5f9 on cycle 0x00016b8c04 (     23825412)
+## received I/O device 00000000, addr 00004444, data 3f7ffed4 on cycle 0x00016b8c0c (     23825420)
+## received I/O device 00000000, addr 00004444, data 3f71f453 on cycle 0x00016b8c14 (     23825428)
+## received I/O device 00000000, addr 00004444, data 3b00e345 on cycle 0x00016b8c1c (     23825436)
+## received I/O device 00000000, addr 00004444, data 3ab5df51 on cycle 0x00016b8c24 (     23825444)
+## received I/O device 00000000, addr 00004444, data 382bf40f on cycle 0x00016b8c2c (     23825452)
+## received I/O device 00000000, addr 00004444, data 3f7ffaee on cycle 0x00016b8c34 (     23825460)
+## received I/O device 00000000, addr 00004444, data 3a8b7d2f on cycle 0x00016b8c3c (     23825468)
+## received I/O device 00000000, addr 00004444, data 3c30e283 on cycle 0x00016b8c44 (     23825476)
+## received I/O device 00000000, addr 00004444, data 3f7fa012 on cycle 0x00016b8c4c (     23825484)
+## received I/O device 00000000, addr 00004444, data 3e02ed79 on cycle 0x00016b8c54 (     23825492)
+## received I/O device 00000000, addr 00004444, data 3e348bfc on cycle 0x00016b8c5c (     23825500)
+## received I/O device 00000000, addr 00004444, data 390fc35d on cycle 0x00016b8c64 (     23825508)
+## received I/O device 00000000, addr 00004444, data 3b2356d7 on cycle 0x00016b8c6c (     23825516)
+## received I/O device 00000000, addr 00004444, data 3f5380f8 on cycle 0x00016b8c74 (     23825524)
+## received I/O device 00000000, addr 00004444, data 3f7fd1e6 on cycle 0x00016b8c7c (     23825532)
+## received I/O device 00000000, addr 00004444, data 3994d07e on cycle 0x00016b8c84 (     23825540)
+## received I/O device 00000000, addr 00004444, data 3f7ff4b2 on cycle 0x00016b8c8c (     23825548)
+## received I/O device 00000000, addr 00004444, data 390018c8 on cycle 0x00016b8c94 (     23825556)
+## received I/O device 00000000, addr 00004444, data 3f7ff6c8 on cycle 0x00016b8c9c (     23825564)
+## received I/O device 00000000, addr 00004444, data 38d5a22a on cycle 0x00016b8ca4 (     23825572)
+## received I/O device 00000000, addr 00004444, data 3823bba9 on cycle 0x00016b8cac (     23825580)
+## received I/O device 00000000, addr 00004444, data 3995a48b on cycle 0x00016b8cb4 (     23825588)
+## received I/O device 00000000, addr 00004444, data 3f79d511 on cycle 0x00016b8cbc (     23825596)
+## received I/O device 00000000, addr 00004444, data 3f7ffb62 on cycle 0x00016b8cc4 (     23825604)
+## received I/O device 00000000, addr 00004444, data 39fdf979 on cycle 0x00016b8ccc (     23825612)
+## received I/O device 00000000, addr 00004444, data 3bae1ae2 on cycle 0x00016b8cd4 (     23825620)
+## received I/O device 00000000, addr 00004444, data 3d769bb3 on cycle 0x00016b8cdc (     23825628)
+## received I/O device 00000000, addr 00004444, data 3f7fd157 on cycle 0x00016b8ce4 (     23825636)
+## received I/O device 00000000, addr 00004444, data 3a6f60f0 on cycle 0x00016b8cec (     23825644)
+## received I/O device 00000000, addr 00004444, data 3b6c3355 on cycle 0x00016b8cf4 (     23825652)
+## received I/O device 00000000, addr 00004444, data 38d29f23 on cycle 0x00016b8cfc (     23825660)
+## received I/O device 00000000, addr 00004444, data 3872c9ba on cycle 0x00016b8d04 (     23825668)
+## received I/O device 00000000, addr 00004444, data 3f7ffdbe on cycle 0x00016b8d0c (     23825676)
+## received I/O device 00000000, addr 00004444, data 3a13b618 on cycle 0x00016b8d14 (     23825684)
+## received I/O device 00000000, addr 00004444, data 3ae4a18e on cycle 0x00016b8d1c (     23825692)
+## received I/O device 00000000, addr 00004444, data 3f7f4ac9 on cycle 0x00016b8d24 (     23825700)
+## received I/O device 00000000, addr 00004444, data 3f7eb524 on cycle 0x00016b8d2c (     23825708)
+## received I/O device 00000000, addr 00004444, data 37ee8f42 on cycle 0x00016b8d34 (     23825716)
+## received I/O device 00000000, addr 00004444, data 3f7bd1d0 on cycle 0x00016b8d3c (     23825724)
+## received I/O device 00000000, addr 00004444, data 3f7ff20f on cycle 0x00016b8d44 (     23825732)
+## received I/O device 00000000, addr 00004444, data 3f7ee069 on cycle 0x00016b8d4c (     23825740)
+## received I/O device 00000000, addr 00004444, data 3f7f69be on cycle 0x00016b8d54 (     23825748)
+## received I/O device 00000000, addr 00004444, data 3f74cf01 on cycle 0x00016b8d5c (     23825756)
+## received I/O device 00000000, addr 00004444, data 3f296d76 on cycle 0x00016b8d64 (     23825764)
+## received I/O device 00000000, addr 00004444, data 38bbce41 on cycle 0x00016b8d6c (     23825772)
+## received I/O device 00000000, addr 00004444, data 3aadff4c on cycle 0x00016b8d74 (     23825780)
+## received I/O device 00000000, addr 00004444, data 3f7ff2f3 on cycle 0x00016b8d7c (     23825788)
+## received I/O device 00000000, addr 00004444, data 3f7fd2a2 on cycle 0x00016b8d84 (     23825796)
+## received I/O device 00000000, addr 00004444, data 3ee3e385 on cycle 0x00016b8d8c (     23825804)
+## received I/O device 00000000, addr 00004444, data 3a1fce98 on cycle 0x00016b8d94 (     23825812)
+## received I/O device 00000000, addr 00004444, data 3877d191 on cycle 0x00016b8d9c (     23825820)
+## received I/O device 00000000, addr 00004444, data 3f7e5b77 on cycle 0x00016b8da4 (     23825828)
+## received I/O device 00000000, addr 00004444, data 3f7fef65 on cycle 0x00016b8dac (     23825836)
+## received I/O device 00000000, addr 00004444, data 3f7fcfc3 on cycle 0x00016b8db4 (     23825844)
+## received I/O device 00000000, addr 00004444, data 3c05a8e5 on cycle 0x00016b8dbc (     23825852)
+## received I/O device 00000000, addr 00004444, data 3bb6239f on cycle 0x00016b8dc4 (     23825860)
+## received I/O device 00000000, addr 00004444, data 39614b1e on cycle 0x00016b8dcc (     23825868)
+## received I/O device 00000000, addr 00004444, data 3f7fc88e on cycle 0x00016b8dd4 (     23825876)
+## received I/O device 00000000, addr 00004444, data 3f7fe4c5 on cycle 0x00016b8ddc (     23825884)
+## received I/O device 00000000, addr 00004444, data 3f7ff9f8 on cycle 0x00016b8de4 (     23825892)
+## received I/O device 00000000, addr 00004444, data 3f7ff4f4 on cycle 0x00016b8dec (     23825900)
+## received I/O device 00000000, addr 00004444, data 3f7f3d52 on cycle 0x00016b8df4 (     23825908)
+## received I/O device 00000000, addr 00004444, data 3f774849 on cycle 0x00016b8dfc (     23825916)
+## received I/O device 00000000, addr 00004444, data 3f7fdeda on cycle 0x00016b8e04 (     23825924)
+## received I/O device 00000000, addr 00004444, data 3f7efaed on cycle 0x00016b8e0c (     23825932)
+## received I/O device 00000000, addr 00004444, data 3af2af4e on cycle 0x00016b8e14 (     23825940)
+## received I/O device 00000000, addr 00004444, data 393022d9 on cycle 0x00016b8e1c (     23825948)
+## received I/O device 00000000, addr 00004444, data 3a597551 on cycle 0x00016b8e24 (     23825956)
+## received I/O device 00000000, addr 00004444, data 3f7fa524 on cycle 0x00016b8e2c (     23825964)
+## received I/O device 00000000, addr 00004444, data 38f19e6d on cycle 0x00016b8e34 (     23825972)
+## received I/O device 00000000, addr 00004444, data 3aad5602 on cycle 0x00016b8e3c (     23825980)
+## received I/O device 00000000, addr 00004444, data 3f7fd53d on cycle 0x00016b8e44 (     23825988)
+## received I/O device 00000000, addr 00004444, data 3ab47179 on cycle 0x00016b8e4c (     23825996)
+## received I/O device 00000000, addr 00004444, data 381ff667 on cycle 0x00016b8e54 (     23826004)
+## received I/O device 00000000, addr 00004444, data 3f7fda64 on cycle 0x00016b8e5c (     23826012)
+## received I/O device 00000000, addr 00004444, data 3899f90f on cycle 0x00016b8e64 (     23826020)
+## received I/O device 00000000, addr 00004444, data 3accd695 on cycle 0x00016b8e6c (     23826028)
+## received I/O device 00000000, addr 00004444, data 3f7ff54a on cycle 0x00016b8e74 (     23826036)
+## received I/O device 00000000, addr 00004444, data 3b97eb06 on cycle 0x00016b8e7c (     23826044)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x00016b8ebc (     23826108)
+## received I/O device 00000000, addr 00001444, data 00000005 on cycle 0x00016b8ebf (     23826111)
+Magic Found 980a19ac. load the target value instead (         32 bit)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x000172b2f3 (     24294131)
+## received I/O device 00000000, addr 00001444, data 00000006 on cycle 0x000172b2f5 (     24294133)
+## received I/O device 00000000, addr 00004444, data 38dbe220 on cycle 0x000172b312 (     24294162)
+## received I/O device 00000000, addr 00004444, data 395a6332 on cycle 0x000172b31e (     24294174)
+## received I/O device 00000000, addr 00004444, data 3a869dec on cycle 0x000172b343 (     24294211)
+## received I/O device 00000000, addr 00004444, data 39b6c74a on cycle 0x000172b368 (     24294248)
+## received I/O device 00000000, addr 00004444, data 38c19731 on cycle 0x000172b38c (     24294284)
+## received I/O device 00000000, addr 00004444, data 39198273 on cycle 0x000172b3b0 (     24294320)
+## received I/O device 00000000, addr 00004444, data 3743dcd1 on cycle 0x000172b3d4 (     24294356)
+## received I/O device 00000000, addr 00004444, data 3f7fee3d on cycle 0x000172b3f8 (     24294392)
+## received I/O device 00000000, addr 00004444, data 395c79cc on cycle 0x000172b41d (     24294429)
+## received I/O device 00000000, addr 00004444, data 3a1b8d8e on cycle 0x000172b441 (     24294465)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x000172b473 (     24294515)
+## received I/O device 00000000, addr 00001444, data 00000007 on cycle 0x000172b475 (     24294517)
+## received I/O device 00000000, addr 00001000, data 00000007 on cycle 0x000172b488 (     24294536)
+## received I/O device 00000000, addr 00002000, data 00000007 on cycle 0x000172b48a (     24294538)
+## RECEIVED TIME PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x000172b490 (     24294544)
+## RECEIVED FINISH PACKET from tile x,y= 0, 0 at I/O 00000000 on cycle 0x000172b49d (     24294557)
+## PERFORMANCE DATA ###################################################
+## a. DMEM_stalls occur when writing to full network
+## b. IMEM_stalls are bank conflicts with DMEM or remote_stores
+## c. DX_stalls are bypass and load use stalls
+## d. redirect stalls are branch taken penalties
+## e. cgni_full_cycles are cycles when processor input buffer is full
+##      these are a result of remote_store/dmem bank conflicts and
+##      indicate likely sources of network congestion
+## f. cgno_full_cycles are cycles when processor output buffer is full
+## g. rsrv stalls are stalls waiting on lr.w.acquire instructions
+##    these are used for high-level flow-control
+##   keep in mind that polling causes instruction count to vary
+## x,y= 0, 0, cycles=  23999642, stalls: DMEM=         0 IMEM=      4483 DX=  10286276 redirect=   1466835 rsrv=    120347, full_cycles: cgni=         0 cgno=         0
+## x,y= 0, 1, cycles=  23999638, stalls: DMEM=         0 IMEM=      3838 DX=  10072195 redirect=   1758079 rsrv=     49235, full_cycles: cgni=         0 cgno=         0
+## x,y= 0, 2, cycles=  23999634, stalls: DMEM=         0 IMEM=      4253 DX=  10069233 redirect=   1755270 rsrv=     43754, full_cycles: cgni=         0 cgno=         0
+## x,y= 1, 0, cycles=  23999640, stalls: DMEM=         0 IMEM=      3930 DX=  10090988 redirect=   1763608 rsrv=     71094, full_cycles: cgni=         0 cgno=         0
+## x,y= 1, 1, cycles=  23999636, stalls: DMEM=         0 IMEM=      3755 DX=  10080734 redirect=   1793370 rsrv=     54587, full_cycles: cgni=         0 cgno=         0
+## x,y= 1, 2, cycles=  23999632, stalls: DMEM=         0 IMEM=      4393 DX=  10059195 redirect=   1787253 rsrv=     38185, full_cycles: cgni=         0 cgno=         0
+## x,y= 2, 0, cycles=  23999638, stalls: DMEM=         0 IMEM=      4476 DX=  10072568 redirect=   1734534 rsrv=     65596, full_cycles: cgni=         0 cgno=         0
+## x,y= 2, 1, cycles=  23999634, stalls: DMEM=         0 IMEM=      4353 DX=  10082427 redirect=   1728688 rsrv=     60025, full_cycles: cgni=         0 cgno=         0
+## x,y= 2, 2, cycles=  23999630, stalls: DMEM=         0 IMEM=      4396 DX=  10027886 redirect=   1766904 rsrv=     81730, full_cycles: cgni=         0 cgno=         0
+$finish called at time : 485891370 ns : File "/home/student/cse240b/hw6/bsg_manycore/testbenches/common/v/bsg_nonsynth_manycore_monitor.v" Line 38
+run: Time (s): cpu = 00:00:29 ; elapsed = 05:14:22 . Memory (MB): peak = 302.520 ; gain = 0.000 ; free physical = 992 ; free virtual = 9922
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Jun  9 07:21:34 2016...
+rm main.bin bsg_rom_main.v main.hex
